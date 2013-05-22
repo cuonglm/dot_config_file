@@ -146,6 +146,8 @@ case $TERM in
         export PROMPT_COMMAND
         ;;
     screen)
-        TITLE=$(hostname -s)                                                            PROMPT_COMMAND='/bin/echo -ne "\033k${TITLE}\033\\"'                            export PROMPT_COMMAND
+        TITLE=$(hostname -s
+        PROMPT_COMMAND='/bin/echo -ne "\033k${TITLE}\033\\"'
+        export PROMPT_COMMAND
         ;;
 esac
