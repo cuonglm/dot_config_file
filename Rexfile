@@ -8,7 +8,6 @@ use Rex::Commands::Run;
 use Rex::Commands::File;
 use Rex::Commands::Fs;
 use File::Basename;
-use Try::Tiny;
 
 user "cuonglm";
 
