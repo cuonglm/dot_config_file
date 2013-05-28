@@ -37,8 +37,8 @@ sub check_user {
 sub add_sudoer {
     
     sudo -on;
-    my $user = @_[0];
-    my $entry = @_[1];
+    my $user = $_[0];
+    my $entry = $_[1];
     my $fh;
 
     eval {
