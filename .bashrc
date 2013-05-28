@@ -71,7 +71,8 @@ fi
 
 if [ "$color_prompt" = yes ]
 then
-    PS1="${debian_chroot:+($debian_chroot)}${HC}${FGRED}\u${RS}:\$"
+    #PS1="${debian_chroot:+($debian_chroot)}${HC}${FGRED}\u${RS}:\$"
+    PS1="${debian_chroot:+($debian_chroot)}${HC}${FGRED}\u${RS}~% "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\$ '
 fi
@@ -128,26 +129,32 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 
 # Start tmux when login ssh
-if [[ "$TERM" != "screen" ]]
-then
-    ID=$(whoami)
-    if tmux has-session -t $ID 2>/dev/null
-    then
-        tmux -2 attach-session -t $ID
-    else
-        tmux -2 new-session -s $ID
-    fi
-fi
+#if [[ "$TERM" != "screen" ]]
+#then
+#    ID=$(whoami)
+#    if tmux has-session -t $ID 2>/dev/null
+#    then
+#        tmux -2 attach-session -t $ID
+#    else
+#        tmux -2 new-session -s $ID
+#    fi
+#fi
 
 # Set title for tmux pane
-case $TERM in
-    xterm*|rxvt)
-        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}\007"'
-        export PROMPT_COMMAND
-        ;;
-    screen)
-        TITLE=$(hostname -s
-        PROMPT_COMMAND='/bin/echo -ne "\033k${TITLE}\033\\"'
-        export PROMPT_COMMAND
-        ;;
-esac
+#case $TERM in
+#    xterm*|rxvt)
+#        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}\007"'
+#        export PROMPT_COMMAND
+#        ;;
+#    screen)
+#        TITLE=$(hostname -s
+#        PROMPT_COMMAND='/bin/echo -ne "\033k${TITLE}\033\\"'
+#        export PROMPT_COMMAND
+#        ;;
+#esac
+
+export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:/home/cuonglm/perl5";
+export PERL_MB_OPT="--install_base /home/cuonglm/perl5";
+export PERL_MM_OPT="INSTALL_BASE=/home/cuonglm/perl5";
+export PERL5LIB="/home/cuonglm/perl5/lib/perl5:$PERL5LIB";
+export PATH="/home/cuonglm/perl5/bin:$PATH";
