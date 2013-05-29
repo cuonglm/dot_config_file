@@ -29,18 +29,18 @@ logging to_file => "rex.log";
 sub check_user {
     
     my ($user) = @_;
-    run "id -u $user";
+    run "id -u $$user";
     
     if ( $? == 0 ) {
-        return $user;
+        return $$user;
     }
 }
 
 sub add_sudoer {
     
     sudo -on;
-    my $user = $_[0];
-    my $entry = $_[1];
+    my ($user) = $_[0];
+    my ($entry) = $_[1];
     my $fh;
 
     eval {
@@ -52,12 +52,17 @@ sub add_sudoer {
         exit;
     }
 
-    eval { $fh->write($entry); };
+    eval { 
+	    
+        $fh->write($$entry); 
+        $fh->write("\n"); 
+    
+    };
 
     if ($@) {
-        say "Add $user to sudoers Failed.";
+        say "Add $$user to sudoers Failed.";
     } else {
-        say "Add $user to sudoers OK!";
+        say "Add $$user to sudoers OK!";
     }
     
     $fh->close;
@@ -103,7 +108,7 @@ task adduser => sub {
     #my $cmd_sudo = 'sudo echo "' . $sudo_add . '" >> /etc/sudoers';
 
     # Check user existed
-    if ( check_user($user) ) {
+    if ( check_user(\$user) ) {
 
         say "$user existed!!!";
         exit;
@@ -149,9 +154,9 @@ task adduser => sub {
 
     # Method 2, run slow
 
-    if ( $sudoer eq 'YES' ) {
+    if ( lc($sudoer) eq 'yes' ) {
     
-        add_sudoer($user, $sudo_add);
+        add_sudoer(\$user, \$sudo_add);
     
     } 
 };
