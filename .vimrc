@@ -14,6 +14,8 @@ colorscheme pyte
 
 "filetype indent plugin on
 
+set smartindent
+
 set incsearch
 
 set hlsearch
