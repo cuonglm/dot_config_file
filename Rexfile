@@ -7,6 +7,9 @@ use Rex -base;
 use Rex::Commands::Run;
 use Rex::Commands::File;
 use Rex::Commands::Fs;
+use Rex::Commands::Process;
+use Rex::Commands::Gather;
+use Data::Dumper;
 use File::Basename;
 
 user "cuonglm";
@@ -72,7 +75,7 @@ desc "Get uptime of servers";
 task uptime => sub {
     
     say run 'echo $HOSTNAME';
-    say run 'uptime';
+    say run 'uptime'; 
 
 };
 
@@ -151,4 +154,21 @@ task adduser => sub {
         add_sudoer($user, $sudo_add);
     
     } 
+};
+
+# Get Memory Information
+
+desc "Get Memory Information";
+
+task "getmemory", sub {
+	
+    my $mem = memory();
+
+    say run 'echo $HOSTNAME';
+    say "Mem Total   : 	" . $mem->{total};
+    say "Mem Free    : 	" . $mem->{free};
+    say "Mem Used    : 	" . $mem->{used};
+    say "Mem Cached  : 	" . $mem->{cached};
+    say "Mem Buffers : 	" . $mem->{buffers};
+    say "";
 };
