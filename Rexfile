@@ -248,7 +248,7 @@ task adduser => sub {
 
 desc "Get Memory Information";
 
-task "getmemory", sub {
+task "getmemory" => sub {
 	
     my $mem = memory();
 
