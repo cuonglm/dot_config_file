@@ -23,6 +23,25 @@ logging to_file => "rex.log";
 #group servers => "server name here",;
 
 #################
+# Constant here #
+#################
+
+# Public key file
+my $pub_key_file = "/home/cuonglm/PublicKeys";
+
+open my ($fh) , '<', $pub_key_file
+    or die "Can not open $pub_key_file: $!";
+
+my %key_dict;
+
+while (<$fh>) {
+	                
+    my ($user, $pubkey) = split /\s/, $_, 2;
+    $key_dict{$user} = $pubkey;
+
+}
+
+#################
 # Function here #
 #################
             
@@ -66,7 +85,6 @@ sub add_sudoer {
     }
     
     $fh->close;
-    exit 0;
 }
 
 #############
@@ -96,16 +114,6 @@ task adduser => sub {
 
     my $user = $param->{user};
     my $sudoer = $param->{sudoer};
-    my @pass = map { ( "a".."z","A".."Z","0".."9" )[rand 62] } 1..20; 
-    my $pass = join('', @pass); 
-    my $shell = "/bin/bash";
-    my $bashrc = "/etc/skel/.bashrc";
-    my $sudo_add = $user . '        ALL=(ALL:ALL) NOPASSWD:ALL'; 
-
-    my $cmd_add = 'sudo useradd -m -s ' . "$shell" . ' ' . "$user";
-    my $cmd_cp = 'sudo install -o ' . "$user " . '-g ' . "$user " . "$bashrc " . '~' . "$user";
-    my $cmd_pass = 'sudo echo -e ' . '"' . $pass . '\n' . $pass . '"' . ' | sudo passwd ' . "$user";
-    #my $cmd_sudo = 'sudo echo "' . $sudo_add . '" >> /etc/sudoers';
 
     # Check user existed
     if ( check_user(\$user) ) {
@@ -115,6 +123,10 @@ task adduser => sub {
     }
 
     # Creat User
+    my $shell = "/bin/bash";
+
+    my $cmd_add = 'sudo useradd -m -s ' . "$shell" . ' ' . "$user";
+
     run $cmd_add;
 
     if ( $? != 0 ) {
@@ -124,6 +136,11 @@ task adduser => sub {
     }
     
     # Creat ".bashrc file"
+
+    my $bashrc = "/etc/skel/.bashrc";
+
+    my $cmd_cp = 'sudo install -o ' . "$user " . '-g ' . "$user " . "$bashrc " . '~' . "$user";
+
     run $cmd_cp;
 
     if ( $? != 0 ) {
@@ -133,6 +150,12 @@ task adduser => sub {
     }
 
     # Creat password
+    my @pass = map { ( "a".."z","A".."Z","0".."9" )[rand 62] } 1..20; 
+
+    my $pass = join('', @pass); 
+
+    my $cmd_pass = 'sudo echo -e ' . '"' . $pass . '\n' . $pass . '"' . ' | sudo passwd ' . "$user";
+
     run $cmd_pass;
 
     if ( $? != 0 ) {
@@ -142,8 +165,11 @@ task adduser => sub {
     }
 
     # Add to sudoers
+    my $sudo_add = $user . '        ALL=(ALL:ALL) NOPASSWD:ALL'; 
  
     # Method 1, run fast, uncomment $cmd_sudo to use 
+    #my $cmd_sudo = 'sudo echo "' . $sudo_add . '" >> /etc/sudoers';
+
     #sudo $cmd_sudo;
 
     #if ( $? !=0 ) {
@@ -159,6 +185,63 @@ task adduser => sub {
         add_sudoer(\$user, \$sudo_add);
     
     } 
+
+    # Add Public key
+    my $auth_file = '/home/' . $user . '/.ssh/authorized_keys';
+
+    my $dot_ssh = '/home/' . $user . '/.ssh';
+
+    my $cmd_make_dir = 'mkdir -p ' . $dot_ssh;
+
+    sudo $cmd_make_dir;
+    
+    my $cmd_make_auth_file = 'touch ' . $auth_file;
+
+    my $cmd_write_auth_file = "";
+
+    if ( exists $key_dict{$user} ) {
+
+        $cmd_write_auth_file = 'echo "' . "$user" . ' ' . $key_dict{$user} . '" >> ' . "$auth_file";
+
+        if ( ! -e $auth_file ) {
+
+            sudo $cmd_make_auth_file;
+
+        } 
+
+        open my ($fh), '<', $auth_file
+            or die "Can not open $auth_file: $!";
+
+        my @inputs = <$fh>;
+
+            if ( grep /$user/, @inputs ) {
+
+                say "$user\'s existed!";
+
+                close ($fh);
+
+            } else {
+
+                sudo $cmd_write_auth_file;
+
+                if ($? != 0 ) {
+
+                    die "Can't add public key.";
+
+                } else {
+
+                    say "Add public key OK!";
+
+                } 
+
+            }
+
+    } else {
+
+        say "Can't file $user\'s key, Please place it in $auth_file!";
+
+    }
+
 };
 
 # Get Memory Information
