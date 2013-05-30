@@ -238,7 +238,7 @@ task adduser => sub {
 
     } else {
 
-        say "Can't file $user\'s key, Please place it in $auth_file!";
+        say "Can't find $user\'s key, Please place it in $auth_file!";
 
     }
 
