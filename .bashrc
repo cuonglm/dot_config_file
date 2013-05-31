@@ -23,7 +23,7 @@ HC="\[\033[1m\]"    # hicolor
 FGBLACK="\[\033[30m\]" # foreground black
 FGRED="\[\033[31m\]" # foreground red
 FGGREEN="\[\033[32m\]" # foreground green
-FGYELLLOW="\[\033[33m\]" # foreground yellow
+FGYELLOW="\[\033[33m\]" # foreground yellow
 FGBLUE="\[\033[34m\]" # foreground blue
 FGPURPLE="\[\033[35m\]" # foreground PURPLE
 FGCYAN="\[\033[36m\]" # foreground cyan
@@ -72,7 +72,10 @@ fi
 if [ "$color_prompt" = yes ]
 then
     #PS1="${debian_chroot:+($debian_chroot)}${HC}${FGRED}\u${RS}:\$"
-    PS1="${debian_chroot:+($debian_chroot)}${HC}${FGRED}\u${RS}~% "
+    #PS1="${debian_chroot:+($debian_chroot)}${HC}${FGRED}\u${RS}~% "
+    PS1="${HC}${FGYELLOW}%${RS}${HC}${FGGREEN} cuonglm${RS} ${FGYELLOW}at${RS} ${HC}${FGCYAN}\w${RS}\\n${HC}${FGYELLOW}%${RS} "
+    #PS1="=====\n\`if [ \$? = 0 ]; then echo \[\e[1m\]\[\e[32m\][^_^]\[\e[0m\]; else echo \[\e[1m\]\[\e[31m\][O_O]\[\e[0m\]; fi\`\n=====\n${HC}${FGYELLOW}%${RS} "
+    #PS1="`printf "%*s\n" $(((5+$COLUMNS)/2)) '====='`\n\`if [ \$? = 0 ]; then printf "%*s" $(((42+$COLUMNS)/2)) \[\e[1m\]\[\e[32m\][^_^]\[\e[0m\]; else printf "%*s" $(((42+$COLUMNS)/2)) \[\e[1m\]\[\e[31m\][O_O]\[\e[0m\]; fi\`\n`printf "%*s\n" $(((5+$COLUMNS)/2)) '====='`\n${HC}${FGYELLOW}%${RS} "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\$ '
 fi
