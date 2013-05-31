@@ -125,9 +125,9 @@ task adduser => sub {
     # Creat User
     my $shell = "/bin/bash";
 
-    my $cmd_add = 'sudo useradd -m -s ' . "$shell" . ' ' . "$user";
+    my $cmd_add = 'useradd -m -s ' . "$shell" . ' ' . "$user";
 
-    run $cmd_add;
+    sudo $cmd_add;
 
     if ( $? != 0 ) {
         die "Can't creat $user.";
@@ -139,9 +139,9 @@ task adduser => sub {
 
     my $bashrc = "/etc/skel/.bashrc";
 
-    my $cmd_cp = 'sudo install -o ' . "$user " . '-g ' . "$user " . "$bashrc " . '~' . "$user";
+    my $cmd_cp = 'install -o ' . "$user " . '-g ' . "$user " . "$bashrc " . '~' . "$user";
 
-    run $cmd_cp;
+    sudo $cmd_cp;
 
     if ( $? != 0 ) {
         die "Can't copy .bashrc file.";
