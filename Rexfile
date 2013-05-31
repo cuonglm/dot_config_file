@@ -37,6 +37,7 @@ my %key_dict;
 while (<$fh>) {
 	                
     my ($user, $pubkey) = split /\s/, $_, 2;
+
     $key_dict{$user} = $pubkey;
 
 }
@@ -51,8 +52,11 @@ sub check_user {
     run "id -u $$user";
     
     if ( $? == 0 ) {
+
         return $$user;
+
     }
+
 }
 
 sub add_sudoer {
@@ -63,25 +67,35 @@ sub add_sudoer {
     my $fh;
 
     eval {
+
         $fh = file_append("/etc/sudoers");
+
     };
 
     if ($@) {
+
         say "Can't open /etc/sudoers file:$@";
+
         exit;
+
     }
 
     eval { 
 	    
         $fh->write($$entry); 
+
         $fh->write("\n"); 
     
     };
 
     if ($@) {
+
         say "Add $$user to sudoers Failed.";
+
     } else {
+
         say "Add $$user to sudoers OK!";
+
     }
     
     $fh->close;
@@ -91,22 +105,26 @@ sub add_sudoer {
 # Task here #
 #############
 
-# Get uptime
+# ========== #
+# Get uptime #
+# ========== #
 
 desc "Get uptime of servers";
 
-task uptime => sub {
+task "uptime" => sub {
     
     say run 'echo $HOSTNAME';
     say run 'uptime'; 
 
 };
 
-# Creat new user
+# ============== #
+# Creat new user #
+# ============== #
 
 desc "Creat new user, add public key, and add to sudoer if necessary";
 
-task adduser => sub {
+task "adduser" => sub {
     
     my ($param) = @_;
     die "No such username given, please use [--user]"
@@ -136,7 +154,6 @@ task adduser => sub {
     }
     
     # Creat ".bashrc file"
-
     my $bashrc = "/etc/skel/.bashrc";
 
     my $cmd_cp = 'install -o ' . "$user " . '-g ' . "$user " . "$bashrc " . '~' . "$user";
@@ -238,13 +255,15 @@ task adduser => sub {
 
     } else {
 
-        say "Can't find $user\'s key, Please place it in $auth_file!";
+        say "Can't find $user\'s public key, Please place it in $auth_file!";
 
     }
 
 };
 
-# Get Memory Information
+# ====================== #
+# Get Memory Information #
+# ====================== #
 
 desc "Get Memory Information";
 
@@ -259,4 +278,5 @@ task "getmemory" => sub {
     say "Mem Cached  : 	" . $mem->{cached};
     say "Mem Buffers : 	" . $mem->{buffers};
     say "";
+
 };
