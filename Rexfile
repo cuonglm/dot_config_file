@@ -166,7 +166,7 @@ task "adduser" => sub {
 		  . $pass
 		  . '"'
 		  . ' | sudo passwd '
-		   . "$user";
+		  . "$user";
 
     run $cmd_pass;
 
@@ -178,25 +178,10 @@ task "adduser" => sub {
     }
 
     # Add to sudoers
-    my $sudo_add = $user . '        ALL=(ALL:ALL) NOPASSWD:ALL'; 
+    my $sudo_entry = $user . '        ALL=(ALL:ALL) NOPASSWD:ALL'; 
  
-    # Method 1, run fast, uncomment $cmd_sudo to use 
-    #my $cmd_sudo = 'sudo echo "'
-    #              . $sudo_add
-    #              . '" >> /etc/sudoers';
-
-    #sudo $cmd_sudo;
-
-    #if ( $? !=0 ) {
-    #    die "Can't add $user to sudoers.";
-    #} else {
-    #    say "Add $user to sudoers OK!";
-    #}
-
-    # Method 2, run slow
-
     if ( lc($sudoer) eq 'yes' ) {
-        add_sudoer(\$user, \$sudo_add);
+        add_sudoer(\$user, \$sudo_entry);
     } 
 
     # Add Public key
