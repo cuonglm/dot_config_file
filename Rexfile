@@ -163,12 +163,12 @@ task "adduser" => sub {
     my $bashrc = "/etc/skel/.bashrc";
 
     my $cmd_cp =  'install -o '
-                 . "$user " 
-		 . '-g ' 
-		 . "$user " 
-		 . "$bashrc " 
-		 . '~' 
-		 . "$user";
+                . "$user " 
+		. '-g ' 
+		. "$user " 
+		. "$bashrc " 
+		. '~' 
+		. "$user";
 
     sudo $cmd_cp;
 
@@ -185,12 +185,12 @@ task "adduser" => sub {
     my $pass = join('', @pass); 
 
     my $cmd_pass =  'sudo echo -e '
-                   . '"'
-		   . $pass
-		   . '\n'
-		   . $pass
-		   . '"'
-		   . ' | sudo passwd '
+                  . '"'
+		  . $pass
+		  . '\n'
+		  . $pass
+		  . '"'
+		  . ' | sudo passwd '
 		   . "$user";
 
     run $cmd_pass;
@@ -206,9 +206,9 @@ task "adduser" => sub {
     my $sudo_add = $user . '        ALL=(ALL:ALL) NOPASSWD:ALL'; 
  
     # Method 1, run fast, uncomment $cmd_sudo to use 
-    #my $cmd_sudo =  'sudo echo "'
-    #                . $sudo_add
-    #                . '" >> /etc/sudoers';
+    #my $cmd_sudo = 'sudo echo "'
+    #              . $sudo_add
+    #              . '" >> /etc/sudoers';
 
     #sudo $cmd_sudo;
 
@@ -228,12 +228,12 @@ task "adduser" => sub {
 
     # Add Public key
     my $auth_file =  '/home/'
-                    . $user
-		    . '/.ssh/authorized_keys';
+                   . $user
+		   . '/.ssh/authorized_keys';
 
     my $dot_ssh =  '/home/'
-                  . $user
-		  . '/.ssh';
+                 . $user
+		 . '/.ssh';
 
     my $cmd_make_dir = 'mkdir -p ' . $dot_ssh;
 
@@ -246,11 +246,11 @@ task "adduser" => sub {
     if ( exists $key_dict{$user} ) {
 
         $cmd_write_auth_file =  'echo "'
-	                       . "$user"
-			       . ' '
-			       . $key_dict{$user}
-			       . '" >> '
-			       . "$auth_file";
+	                      . "$user"
+			      . ' '
+			      . $key_dict{$user}
+			      . '" >> '
+			      . "$auth_file";
 
         if ( ! -e $auth_file ) {
 
