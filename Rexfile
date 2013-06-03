@@ -27,7 +27,7 @@ logging to_file => "rex.log";
 #################
 
 # Public key file
-my $pub_key_file = "/home/cuonglm/PublicKeys";
+my $pub_key_file = qq(/home/cuonglm/PublicKeys);
 
 open my ($fh) , '<', $pub_key_file
     or die "Can not open $pub_key_file: $!";
@@ -122,10 +122,10 @@ task "adduser" => sub {
     # Creat User
     my $shell = "/bin/bash";
 
-    my $cmd_add =  'useradd -m -s '
-                 . "$shell" 
-		 . ' ' 
-		 . "$user";
+    my $cmd_add =  q(useradd -m -s )
+                 . qq($shell) 
+		 . q( ) 
+		 . qq($user);
 
     sudo $cmd_add;
 
@@ -139,13 +139,13 @@ task "adduser" => sub {
     # Creat ".bashrc file"
     my $bashrc = "/etc/skel/.bashrc";
 
-    my $cmd_cp =  'install -o '
-                . "$user " 
-    		. '-g ' 
-    		. "$user " 
-    		. "$bashrc " 
-    		. '~' 
-    		. "$user";
+    my $cmd_cp =  q(install -o )
+                . qq($user ) 
+    		. q(-g ) 
+    		. qq($user ) 
+    		. qq($bashrc ) 
+    		. q(~) 
+    		. qq($user);
 
     if ( $? != 0 ) {
         die "Can't copy .bashrc file.";
@@ -159,14 +159,14 @@ task "adduser" => sub {
 
     my $pass = join('', @pass); 
 
-    my $cmd_pass =  'sudo echo -e '
-                  . '"'
-		  . $pass
-		  . '\n'
-		  . $pass
-		  . '"'
-		  . ' | sudo passwd '
-		  . "$user";
+    my $cmd_pass =  q(sudo echo -e )
+                  . q(")
+		  . qq($pass)
+		  . q(\n)
+		  . qq($pass)
+		  . q(")
+		  . q( | sudo passwd )
+		  . qq($user);
 
     run $cmd_pass;
 
@@ -178,37 +178,37 @@ task "adduser" => sub {
     }
 
     # Add to sudoers
-    my $sudo_entry = $user . '        ALL=(ALL:ALL) NOPASSWD:ALL'; 
+    my $sudo_entry = $user . q(        ALL=(ALL:ALL) NOPASSWD:ALL); 
  
     if ( lc($sudoer) eq 'yes' ) {
         add_sudoer(\$user, \$sudo_entry);
     } 
 
     # Add Public key
-    my $auth_file =  '/home/'
-                   . $user
-		   . '/.ssh/authorized_keys';
+    my $auth_file =  q(/home/)
+                   . qq($user)
+		   . q(/.ssh/authorized_keys);
 
-    my $dot_ssh =  '/home/'
-                 . $user
-		 . '/.ssh';
+    my $dot_ssh =  q(/home/)
+                 . qq($user)
+		 . q(/.ssh);
 
-    my $cmd_make_dir = 'mkdir -p ' . $dot_ssh;
+    my $cmd_make_dir = q(mkdir -p ) . $dot_ssh;
 
     sudo $cmd_make_dir;
     
-    my $cmd_make_auth_file = 'touch ' . $auth_file;
+    my $cmd_make_auth_file = q(touch ) . $auth_file;
 
-    my $cmd_write_auth_file = q{};
+    my $cmd_write_auth_file = q();
 
     if ( exists $key_dict{$user} ) {
 
-        $cmd_write_auth_file =  'echo "'
-	                      . "$user"
-			      . ' '
+        $cmd_write_auth_file =  q(echo ")
+	                      . qq($user)
+			      . q( )
 			      . $key_dict{$user}
-			      . '" >> '
-			      . "$auth_file";
+			      . q(" >> )
+			      . qq($auth_file);
 
         if ( ! -e $auth_file ) {
             sudo $cmd_make_auth_file;
