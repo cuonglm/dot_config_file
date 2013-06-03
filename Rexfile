@@ -227,7 +227,8 @@ task "adduser" => sub {
 
                 if ($? != 0 ) {
                     die "Can't add public key.";
-                } else {
+                }
+		else {
                     say "Add public key OK!";
                 } 
             }
