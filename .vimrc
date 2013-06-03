@@ -1,6 +1,8 @@
 """"""""""""""""""""""""""""""""""
 " CuongLM aka Gnouc's vimrc file "
 """"""""""""""""""""""""""""""""""
+set textwidth=78
+
 set nocompatible
 
 set number

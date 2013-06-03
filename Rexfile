@@ -92,7 +92,8 @@ sub add_sudoer {
 
         say "Add $$user to sudoers Failed.";
 
-    } else {
+    } 
+    else {
 
         say "Add $$user to sudoers OK!";
 
@@ -138,6 +139,7 @@ task "adduser" => sub {
 
         say "$user existed!!!";
         exit;
+
     }
 
     # Creat User
@@ -149,7 +151,8 @@ task "adduser" => sub {
 
     if ( $? != 0 ) {
         die "Can't creat $user.";
-    } else {
+    } 
+    else {
         say "Creat user $user OK!";
     }
     
@@ -162,7 +165,8 @@ task "adduser" => sub {
 
     if ( $? != 0 ) {
         die "Can't copy .bashrc file.";
-    } else {
+    } 
+    else {
         say 'Copy file "' . $bashrc . '" OK!';
     }
 
@@ -177,7 +181,8 @@ task "adduser" => sub {
 
     if ( $? != 0 ) {
         die "Can't creat $user\'s password.";
-    } else {
+    } 
+    else {
         say "Creat $user\'s password OK!";
     }
 
@@ -237,7 +242,8 @@ task "adduser" => sub {
 
                 close ($fh);
 
-            } else {
+            } 
+	    else {
 
                 sudo $cmd_write_auth_file;
 
@@ -253,7 +259,8 @@ task "adduser" => sub {
 
             }
 
-    } else {
+    } 
+    else {
 
         say "Can't find $user\'s public key, Please place it in $auth_file!";
 
@@ -280,3 +287,5 @@ task "getmemory" => sub {
     say "";
 
 };
+
+# vim:ft=perl
