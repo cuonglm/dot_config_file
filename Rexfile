@@ -6,11 +6,8 @@ use v5.14;
 use Rex -base;
 use Rex::Commands::Run;
 use Rex::Commands::File;
-use Rex::Commands::Fs;
-use Rex::Commands::Process;
+use Rex::FS::File;
 use Rex::Commands::Gather;
-use Data::Dumper;
-use File::Basename;
 
 user "cuonglm";
 
@@ -19,8 +16,19 @@ public_key "/home/cuonglm/.ssh/id_rsa.pub";
 
 logging to_file => "rex.log";
 
-# uncomment to deploy in many servers
-#group servers => "server name here",;
+# Read servers from hosts file
+my @servers = qw();
+
+my $host = file_read "rexhosts";
+
+foreach $| ($host->read_all) {	
+    $| =~ s/(?:\t|\s)//;
+    push @servers, $|;
+} 
+
+$host->close;
+
+group hosts => @servers;
 
 #################
 # Constant here #
@@ -258,4 +266,5 @@ task "getmemory" => sub {
 
 };
 
-# vim:ft=perl
+# vim: syntax=perl
+# vim: ft=perl
