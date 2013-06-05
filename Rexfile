@@ -47,6 +47,8 @@ while (<$fh>) {
     $key_dict{$user} = $pubkey;
 }
 
+$fh->close;
+
 #################
 # Function here #
 #################

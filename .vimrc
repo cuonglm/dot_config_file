@@ -33,6 +33,8 @@ set showcmd
 set wildmode=longest:full
 set wildmenu
 
+set matchpairs+=<:>
+
 """""""""""""
 " bind keys "
 """""""""""""
