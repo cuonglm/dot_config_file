@@ -5,16 +5,21 @@ set textwidth=78
 
 set nocompatible
 
-set number
+"set number
 
-syntax on
+set background=dark
+
+syntax enable 
 
 "colorscheme desert
-colorscheme pyte
-"colorscheme elflord
-"colorscheme default
+"colorscheme pyte
+"colorscheme grb256 
+colorscheme vividchalk 
+"colorscheme distinguished 
+"colorscheme developer 
+"colorscheme tidy 
 
-"filetype indent plugin on
+filetype indent plugin on
 
 set smartindent
 
