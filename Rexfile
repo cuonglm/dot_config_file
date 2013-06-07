@@ -47,8 +47,6 @@ while (<$fh>) {
     $key_dict{$user} = $pubkey;
 }
 
-$fh->close;
-
 #################
 # Function here #
 #################
@@ -88,7 +86,6 @@ sub add_sudoer {
     else {
         say "Add $$user to sudoers OK!";
     }
-    $fh->close;
 }
 
 #############
@@ -224,7 +221,8 @@ task "adduser" => sub {
             sudo $cmd_make_auth_file;
         } 
 
-        open my ($fh), '<', $auth_file
+	
+        sudo "open my ($fh), '<', $auth_file"
             or die "Can not open $auth_file: $!";
 
         my @inputs = <$fh>;
