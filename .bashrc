@@ -126,6 +126,7 @@ then
   fi
 fi
 
+bind "set show-all-if-ambiguous on"
 # set variables for ibus
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
@@ -161,3 +162,5 @@ export PERL_MB_OPT="--install_base /home/cuonglm/perl5";
 export PERL_MM_OPT="INSTALL_BASE=/home/cuonglm/perl5";
 export PERL5LIB="/home/cuonglm/perl5/lib/perl5:$PERL5LIB";
 export PATH="/home/cuonglm/perl5/bin:$PATH";
+
+export TERM=xterm-256color
