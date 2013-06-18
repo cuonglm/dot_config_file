@@ -1,11 +1,8 @@
 """"""""""""""""""""""""""""""""""
 " CuongLM aka Gnouc's vimrc file "
 """"""""""""""""""""""""""""""""""
-set textwidth=78
 
 set nocompatible
-
-"set number
 
 set background=dark
 
@@ -19,9 +16,9 @@ colorscheme vividchalk
 "colorscheme developer 
 "colorscheme tidy 
 
-filetype indent plugin on
+"filetype indent plugin on
 
-set smartindent
+"set smartindent
 
 set incsearch
 
@@ -61,3 +58,4 @@ function! Tab_Or_Complete()
   endif
 endfunction
 inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+
