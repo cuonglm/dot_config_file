@@ -168,12 +168,12 @@ task "adduser" => sub {
 
     my $cmd_pass =  q(sudo echo -e )
                   . q(")
-		  . qq($pass)
-		  . q(\n)
-		  . qq($pass)
-		  . q(")
-		  . q( | sudo passwd )
-		  . qq($user);
+		          . qq($pass)
+		          . q(\n)
+		          . qq($pass)
+		          . q(")
+		          . q( | sudo passwd )
+		          . qq($user);
 
     run $cmd_pass;
 
@@ -194,11 +194,11 @@ task "adduser" => sub {
     # Add Public key
     my $auth_file =  q(/home/)
                    . qq($user)
-		   . q(/.ssh/authorized_keys);
+		           . q(/.ssh/authorized_keys);
 
     my $dot_ssh =  q(/home/)
                  . qq($user)
-		 . q(/.ssh);
+		         . q(/.ssh);
 
     my $cmd_make_dir = q(mkdir -p ) . $dot_ssh;
 
@@ -211,11 +211,11 @@ task "adduser" => sub {
     if ( exists $key_dict{$user} ) {
 
         $cmd_write_auth_file =  q(echo ")
-	                      . qq($user)
-			      . q( )
-			      . $key_dict{$user}
-			      . q(" >> )
-			      . qq($auth_file);
+	                          . qq($user)
+			                  . q( )
+			                  . $key_dict{$user}
+			                  . q(" >> )
+			                  . qq($auth_file);
 
         if ( ! -e $auth_file ) {
             sudo $cmd_make_auth_file;
