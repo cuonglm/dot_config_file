@@ -65,6 +65,7 @@ class MarkdownDialog(Ui_MarkdownEditDialogWebKit, QDialog):
     def changeMode(self, isWYSMode):
         if isWYSMode:
             html = markdown.markdown(self.mdEdit.toPlainText())
+            print("\n\nMarkdown to HTML:\n\nHTML:\n")
             print(html)
             self.htmlEdit.setHtml(html)
         else:
@@ -72,8 +73,10 @@ class MarkdownDialog(Ui_MarkdownEditDialogWebKit, QDialog):
             h2t = myhtml2text.MyHtml2Text()
             h2t.google_doc = True
             html = self.frame.toHtml()
+            print("\n\nHTML to md:\n\nHTML:\n")
             print(html)
             md = h2t.handle(html)
+            print("\nMarkdown:\n" + md)
             #md = markdownify.markdownify(html, ['style'])
             self.mdEdit.setPlainText(md)
 
