@@ -71,7 +71,7 @@ class MarkdownDialog(Ui_MarkdownEditDialogWebKit, QDialog):
         else:
             #h2t = html2text.HTML2Text()
             h2t = myhtml2text.MyHtml2Text()
-            h2t.google_doc = True
+            #h2t.google_doc = True
             html = self.frame.toHtml()
             print("\n\nHTML to md:\n\nHTML:\n")
             print(html)
