@@ -6,7 +6,7 @@ set nocompatible
 
 set background=dark
 
-syntax enable 
+syntax enable
 
 "colorscheme desert
 "colorscheme pyte
@@ -40,6 +40,22 @@ set matchpairs+=<:>
 set tabstop=4
 
 set sw=4
+
+set expandtab
+
+set shiftwidth=4
+
+set shiftround
+
+set nowrap
+
+set backspace=indent,eol,start
+
+if has("vms")
+    set nobackup
+else
+    set backup
+endif
 
 """""""""""""
 " bind keys "
