@@ -3,8 +3,7 @@
 import sys
 
 from PySide.QtCore import SIGNAL
-from PySide.QtGui import QDialog
-from PySide.QtGui import QTextCursor, QTextCharFormat, QFont
+from PySide.QtGui import QMainWindow
 from PySide.QtGui import QApplication
 from PySide.QtWebKit import QWebView, QWebPage, QWebFrame
 
@@ -13,23 +12,35 @@ import myhtml2text
 #import html2text
 #import markdownify
 
-from Ui_MarkdownEditDialogWebKit import Ui_MarkdownEditDialogWebKit
+from Ui_MarkdownEditWindow import Ui_MarkdownEditWindow
 
 
-class MarkdownDialog(Ui_MarkdownEditDialogWebKit, QDialog):
+class MarkdownWindow(Ui_MarkdownEditWindow, QMainWindow):
 
     def __init__(self, parent=None):
-        super(MarkdownDialog, self).__init__(parent)
+        super(MarkdownWindow, self).__init__(parent)
         self.setupUi(self)
         self.htmlEdit.setVisible(False)
         self.page = self.htmlEdit.page()
         self.page.setContentEditable(True)
         self.frame = self.page.currentFrame()
 
-        self.connect(self.buttonB, SIGNAL("clicked(bool)"), self.boldText)
-        self.connect(self.buttonI, SIGNAL("clicked(bool)"), self.italicText)
-        self.connect(self.buttonMode, SIGNAL("toggled(bool)"), self.changeMode)
+        self.setupActions()
 
+        #self.connect(self.buttonB, SIGNAL("clicked(bool)"), self.boldText)
+        #self.connect(self.buttonI, SIGNAL("clicked(bool)"), self.italicText)
+        self.connect(self.actionSwitchMode, SIGNAL("toggled(bool)"), self.switchMode)
+
+    def setupActions(self):
+        # Action Bold
+        self.actionBold = self.page.action(QWebPage.ToggleBold)
+        self.toolBar.addAction(self.actionBold)
+
+        # Action Italic
+        self.actionItalic = self.page.action(QWebPage.ToggleItalic)
+        self.toolBar.addAction(self.actionItalic)
+
+    """
     def boldText(self, checked):
         if self.htmlEdit.isVisible():
             if self.page.hasSelection():
@@ -61,12 +72,15 @@ class MarkdownDialog(Ui_MarkdownEditDialogWebKit, QDialog):
                 cursor.insertText("_")
                 cursor.setPosition(end, QTextCursor.MoveAnchor)
                 cursor.insertText("_")
+    """
 
-    def changeMode(self, isWYSMode):
+    def switchMode(self, isWYSMode):
         if isWYSMode:
+            md = self.mdEdit.toPlainText()
+            print("\n\nMarkdown to HTML:\n\nMarkdown:\n")
+            print(md)
             html = markdown.markdown(self.mdEdit.toPlainText())
-            print("\n\nMarkdown to HTML:\n\nHTML:\n")
-            print(html)
+            print("\nHTML:\n" + html)
             self.htmlEdit.setHtml(html)
         else:
             #h2t = html2text.HTML2Text()
@@ -83,6 +97,6 @@ class MarkdownDialog(Ui_MarkdownEditDialogWebKit, QDialog):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    d = MarkdownDialog()
+    d = MarkdownWindow()
     d.show()
     app.exec_()
