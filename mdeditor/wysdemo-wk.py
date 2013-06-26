@@ -44,6 +44,9 @@ class MarkdownWindow(Ui_MarkdownEditWindow, QMainWindow):
         #self.connect(self.buttonI, SIGNAL("clicked(bool)"), self.italicText)
         self.connect(self.actionSwitchMode, SIGNAL("toggled(bool)"), self.switchMode)
 
+        # markdown converter object
+        self.md_converter = markdown.Markdown(smart_emphasis=False)
+
     def setupActions(self):
         # Action Bold
         self.actionBold = self.page.action(QWebPage.ToggleBold)
@@ -92,7 +95,7 @@ class MarkdownWindow(Ui_MarkdownEditWindow, QMainWindow):
             md = self.mdEdit.toPlainText()
             print("\n\nMarkdown to HTML:\n\nMarkdown:\n")
             print(md)
-            html = markdown.markdown(self.mdEdit.toPlainText())
+            html = self.md_converter.convert(md)
             print("\nHTML:\n" + html)
             self.htmlEdit.setHtml(html)
         else:
