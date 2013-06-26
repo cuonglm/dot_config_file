@@ -16,7 +16,11 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QTextEdit" name="mdEdit"/>
+     <widget class="QTextEdit" name="mdEdit">
+      <property name="acceptRichText">
+       <bool>false</bool>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QWebView" name="htmlEdit">

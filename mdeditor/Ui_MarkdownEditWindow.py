@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mdeditwindow.ui'
 #
-# Created: Wed Jun 26 15:57:45 2013
+# Created: Wed Jun 26 16:48:36 2013
 #      by: pyside-uic 0.2.14 running on PySide 1.1.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -18,6 +18,7 @@ class Ui_MarkdownEditWindow(object):
         self.verticalLayout = QtGui.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
         self.mdEdit = QtGui.QTextEdit(self.centralwidget)
+        self.mdEdit.setAcceptRichText(False)
         self.mdEdit.setObjectName("mdEdit")
         self.verticalLayout.addWidget(self.mdEdit)
         self.htmlEdit = QtWebKit.QWebView(self.centralwidget)

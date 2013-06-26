@@ -4,12 +4,13 @@ import sys
 
 from PySide.QtCore import SIGNAL
 from PySide.QtGui import QMainWindow
+from PySide.QtGui import QFont, QFontMetrics
 from PySide.QtGui import QApplication
 from PySide.QtWebKit import QWebView, QWebPage, QWebFrame
 
 import markdown
 import myhtml2text
-#import html2text
+import html2text
 #import markdownify
 
 from Ui_MarkdownEditWindow import Ui_MarkdownEditWindow
@@ -24,6 +25,18 @@ class MarkdownWindow(Ui_MarkdownEditWindow, QMainWindow):
         self.page = self.htmlEdit.page()
         self.page.setContentEditable(True)
         self.frame = self.page.currentFrame()
+
+        # set tab width to 4 space
+        font = QFont()
+        font.setFamily("Courier")
+        font.setStyleHint(QFont.Monospace)
+        font.setFixedPitch(True)
+        font.setPointSize(10)
+        self.mdEdit.setFont(font)
+
+        tabStop = 4
+        metrics = QFontMetrics(font)
+        self.mdEdit.setTabStopWidth(tabStop * metrics.width(' '))
 
         self.setupActions()
 
@@ -83,8 +96,8 @@ class MarkdownWindow(Ui_MarkdownEditWindow, QMainWindow):
             print("\nHTML:\n" + html)
             self.htmlEdit.setHtml(html)
         else:
-            #h2t = html2text.HTML2Text()
-            h2t = myhtml2text.MyHtml2Text()
+            h2t = html2text.HTML2Text()
+            #h2t = myhtml2text.MyHtml2Text()
             #h2t.google_doc = True
             html = self.frame.toHtml()
             print("\n\nHTML to md:\n\nHTML:\n")
