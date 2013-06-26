@@ -18,7 +18,7 @@ colorscheme vividchalk
 
 "filetype indent plugin on
 
-"set smartindent
+set smartindent
 
 set incsearch
 
@@ -36,6 +36,10 @@ set wildmode=longest:full
 set wildmenu
 
 set matchpairs+=<:>
+
+set tabstop=4
+
+set sw=4
 
 """""""""""""
 " bind keys "
