@@ -102,6 +102,7 @@ class MarkdownWindow(Ui_MarkdownEditWindow, QMainWindow):
             h2t = html2text.HTML2Text()
             #h2t = myhtml2text.MyHtml2Text()
             #h2t.google_doc = True
+            h2t.body_width = 0
             html = self.frame.toHtml()
             print("\n\nHTML to md:\n\nHTML:\n")
             print(html)
