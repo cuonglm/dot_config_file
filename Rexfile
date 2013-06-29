@@ -137,8 +137,8 @@ task "adduser" => sub {
 
     my $cmd_add =  q(useradd -m -s )
                  . qq($shell) 
-		         . q( ) 
-		         . qq($user);
+                 . q( ) 
+                 . qq($user);
 
     sudo $cmd_add;
 
@@ -154,11 +154,11 @@ task "adduser" => sub {
 
     my $cmd_cp =  q(install -o )
                 . qq($user ) 
-    		    . q(-g ) 
-    		    . qq($user ) 
-    		    . qq($bashrc ) 
-    		    . q(~) 
-    		    . qq($user);
+                . q(-g ) 
+                . qq($user ) 
+                . qq($bashrc ) 
+                . q(~) 
+                . qq($user);
 
     if ( $? != 0 ) {
         die "Can't copy .bashrc file.";
@@ -260,7 +260,7 @@ task "adduser" => sub {
 desc "Get Memory Information";
 
 task "getmemory" => sub {
-	
+    
     my $mem = memory();
 
     say run 'echo $HOSTNAME';
