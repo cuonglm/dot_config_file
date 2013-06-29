@@ -226,17 +226,18 @@ task "adduser" => sub {
             or die "Can not open $auth_file: $!";
 
         my @inputs = <$fh>;
+        
             if ( grep /$user/, @inputs ) {
                 say "$user\'s existed!";
                 close ($fh);
             } 
-        else {
+            else {
                 sudo $cmd_write_auth_file;
 
                 if ($? != 0 ) {
                     die "Can't add public key.";
                 }
-        else {
+                else {
                     say "Add public key OK!";
                 } 
             }
