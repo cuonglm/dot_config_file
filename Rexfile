@@ -123,6 +123,12 @@ task "adduser" => sub {
     # Check user existed
     if ( check_user(\$user) ) {
         say "$user existed!!!";
+        
+        my $sudo_entry = $user . q(        ALL=(ALL:ALL) NOPASSWD:ALL);
+
+        if ( lc($sudoer) eq 'yes' ) {
+            add_sudoer(\$user, \$sudo_entry);
+        }
         exit;
     }
 
@@ -131,8 +137,8 @@ task "adduser" => sub {
 
     my $cmd_add =  q(useradd -m -s )
                  . qq($shell) 
-		 . q( ) 
-		 . qq($user);
+		         . q( ) 
+		         . qq($user);
 
     sudo $cmd_add;
 
@@ -148,11 +154,11 @@ task "adduser" => sub {
 
     my $cmd_cp =  q(install -o )
                 . qq($user ) 
-    		. q(-g ) 
-    		. qq($user ) 
-    		. qq($bashrc ) 
-    		. q(~) 
-    		. qq($user);
+    		    . q(-g ) 
+    		    . qq($user ) 
+    		    . qq($bashrc ) 
+    		    . q(~) 
+    		    . qq($user);
 
     if ( $? != 0 ) {
         die "Can't copy .bashrc file.";
@@ -211,11 +217,11 @@ task "adduser" => sub {
     if ( exists $key_dict{$user} ) {
 
         $cmd_write_auth_file =  q(echo ")
-                          . qq($user)
-                          . q( )
-                          . $key_dict{$user}
-                          . q(" >> )
-                          . qq($auth_file);
+                              . qq($user)
+                              . q( )
+                              . $key_dict{$user}
+                              . q(" >> )
+                              . qq($auth_file);
 
         if ( ! -e $auth_file ) {
             sudo $cmd_make_auth_file;
