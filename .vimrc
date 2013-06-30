@@ -57,6 +57,9 @@ else
     set backup
 endif
 
+set backupdir=~/.vim/backup/
+set dir=~/.vim/backup/
+
 """""""""""""
 " bind keys "
 """""""""""""

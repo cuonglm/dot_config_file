@@ -164,3 +164,4 @@ export PERL5LIB="/home/cuonglm/perl5/lib/perl5:$PERL5LIB";
 export PATH="/home/cuonglm/perl5/bin:$PATH";
 
 export TERM=xterm-256color
+export EDITOR="vim"
