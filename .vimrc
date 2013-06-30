@@ -16,7 +16,7 @@ colorscheme vividchalk
 "colorscheme developer 
 "colorscheme tidy 
 
-"filetype indent plugin on
+filetype indent plugin on
 
 set smartindent
 
