@@ -16,7 +16,7 @@ colorscheme vividchalk
 "colorscheme developer 
 "colorscheme tidy 
 
-filetype indent plugin on
+"filetype plugin indent on
 
 set smartindent
 
@@ -64,10 +64,15 @@ set dir=~/.vim/backup/
 " bind keys "
 """""""""""""
 
-:map \c i{<Esc>ea}<Esc>
-:map \p i(<Esc>ea)<Esc>
-:map \q i'<Esc>ea'<Esc>
-:map \dq i"<Esc>ea"<Esc>
+":map \c i{<Esc>ea}<Esc>
+":map \p i(<Esc>ea)<Esc>
+":map \q i'<Esc>ea'<Esc>
+":map \dq i"<Esc>ea"<Esc>
+
+inoremap ( ()<Esc>i
+inoremap { {}<Esc>i
+inoremap [ []<Esc>i
+inoremap qq <Esc>
 
 """"""""""""""""""""""""""""""""
 "Tab Completion in Insert Mode "
