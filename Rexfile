@@ -233,20 +233,20 @@ task "adduser" => sub {
 
         my @inputs = <$fh>;
         
-            if ( grep /$user/, @inputs ) {
-                say "$user\'s existed!";
-                close ($fh);
-            } 
-            else {
-                sudo $cmd_write_auth_file;
+        if ( grep /$user/, @inputs ) {
+            say "$user\'s existed!";
+            close ($fh);
+        } 
+        else {
+            sudo $cmd_write_auth_file;
 
-                if ($? != 0 ) {
-                    die "Can't add public key.";
-                }
-                else {
-                    say "Add public key OK!";
-                } 
+            if ($? != 0 ) {
+                die "Can't add public key.";
             }
+            else {
+                say "Add public key OK!";
+            } 
+        }
     } 
     else {
         say "Can't find $user\'s public key, Please place it in $auth_file!";
@@ -273,5 +273,20 @@ task "getmemory" => sub {
 
 };
 
+desc "Download remote file to local";
+
+task "download" => sub {
+    
+    my ($params) = @_;
+
+    die "Please chose remote file" unless exists $params->{remote};
+    die "Please chose local file" unless exists $params->{local};
+    
+    my $remote = $params->{remote};
+    my $local = $params->{local};
+    
+    download "$remote", "$local";
+        
+};
 # vim: syntax=perl
 # vim: ft=perl
