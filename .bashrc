@@ -38,8 +38,8 @@ BGCYAN="\[\033[46m\]" # background cyan
 BGWHITE="\[\033[47m\]" # background white
 
 # Setting history length 
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=5000
+HISTFILESIZE=10000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -126,7 +126,6 @@ then
   fi
 fi
 
-bind "set show-all-if-ambiguous on"
 # set variables for ibus
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
