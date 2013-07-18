@@ -16,7 +16,9 @@ colorscheme vividchalk
 "colorscheme developer 
 "colorscheme tidy 
 
-"filetype plugin indent on
+"if has("autocmd")
+"  filetype plugin indent on
+"endif
 
 set smartindent
 
@@ -60,6 +62,10 @@ endif
 set backupdir=~/.vim/backup/
 set dir=~/.vim/backup/
 
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 """""""""""""
 " bind keys "
 """""""""""""
@@ -86,4 +92,3 @@ function! Tab_Or_Complete()
   endif
 endfunction
 inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
-
