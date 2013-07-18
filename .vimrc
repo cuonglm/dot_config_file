@@ -64,15 +64,15 @@ set dir=~/.vim/backup/
 " bind keys "
 """""""""""""
 
-":map \c i{<Esc>ea}<Esc>
-":map \p i(<Esc>ea)<Esc>
-":map \q i'<Esc>ea'<Esc>
-":map \dq i"<Esc>ea"<Esc>
+:map \c i{<Esc>ea}<Esc>
+:map \p i(<Esc>ea)<Esc>
+:map \q i'<Esc>ea'<Esc>
+:map \dq i"<Esc>ea"<Esc>
 
-inoremap ( ()<Esc>i
-inoremap { {}<Esc>i
-inoremap [ []<Esc>i
-inoremap qq <Esc>
+"inoremap ( ()<Esc>i
+"inoremap { {}<Esc>i
+"inoremap [ []<Esc>i
+inoremap jk <Esc>
 
 """"""""""""""""""""""""""""""""
 "Tab Completion in Insert Mode "
