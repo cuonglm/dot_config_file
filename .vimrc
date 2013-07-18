@@ -30,6 +30,8 @@ set ignorecase
 
 set smartcase
 
+set smarttab
+
 set ruler
 
 set showcmd
