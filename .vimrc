@@ -68,6 +68,12 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+augroup hlsearch
+    autocmd!
+    autocmd InsertEnter * :setlocal nohlsearch
+    autocmd InsertLeave * :setlocal hlsearch
+augroup END
+
 """""""""""""
 " bind keys "
 """""""""""""
@@ -81,6 +87,7 @@ endif
 "inoremap { {}<Esc>i
 "inoremap [ []<Esc>i
 inoremap jk <Esc>
+:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 """"""""""""""""""""""""""""""""
 "Tab Completion in Insert Mode "
