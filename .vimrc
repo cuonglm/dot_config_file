@@ -74,20 +74,24 @@ augroup hlsearch
     autocmd InsertLeave * :setlocal hlsearch
 augroup END
 
+"set pastetoggle=
+
 """""""""""""
 " bind keys "
 """""""""""""
 
-:map \c i{<Esc>ea}<Esc>
-:map \p i(<Esc>ea)<Esc>
-:map \q i'<Esc>ea'<Esc>
-:map \dq i"<Esc>ea"<Esc>
+map \c i{<Esc>ea}<Esc>
+map \p i(<Esc>ea)<Esc>
+map \q i'<Esc>ea'<Esc>
+map \dq i"<Esc>ea"<Esc>
+map \C :%s///gn<CR>
 
 "inoremap ( ()<Esc>i
 "inoremap { {}<Esc>i
 "inoremap [ []<Esc>i
 inoremap jk <Esc>
-:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+set pastetoggle=<F2>
 
 """"""""""""""""""""""""""""""""
 "Tab Completion in Insert Mode "
