@@ -74,7 +74,7 @@ augroup hlsearch
     autocmd InsertLeave * :setlocal hlsearch
 augroup END
 
-"set pastetoggle=
+autocmd FileType help only
 
 """""""""""""
 " bind keys "
@@ -91,6 +91,7 @@ map \C :%s///gn<CR>
 "inoremap [ []<Esc>i
 inoremap jk <Esc>
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <F3> :set cuc! cul!<CR>
 set pastetoggle=<F2>
 
 """"""""""""""""""""""""""""""""
