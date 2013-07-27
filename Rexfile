@@ -288,5 +288,12 @@ task "download" => sub {
     download "$remote", "$local";
         
 };
+
+desc "Edit check_mk file remotely";
+
+task "edit_cmk" => sub {
+    my $cmd = q(sed -i '/only_from/s#$# 192.168.5.192#' /etc/xinetd.d/check_mk);
+    sudo $cmd;
+};
 # vim: syntax=perl
 # vim: ft=perl
