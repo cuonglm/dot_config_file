@@ -16,9 +16,9 @@ colorscheme vividchalk
 "colorscheme developer 
 "colorscheme tidy 
 
-"if has("autocmd")
-"  filetype plugin indent on
-"endif
+if has("autocmd")
+  filetype plugin indent on
+endif
 
 set smartindent
 
@@ -86,13 +86,31 @@ map \q i'<Esc>ea'<Esc>
 map \dq i"<Esc>ea"<Esc>
 map \C :%s///gn<CR>
 
-"inoremap ( ()<Esc>i
-"inoremap { {}<Esc>i
-"inoremap [ []<Esc>i
 inoremap jk <Esc>
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 nnoremap <silent> <F3> :set cuc! cul!<CR>
+nnoremap <silent> <F4> :set nu!<CR>
 set pastetoggle=<F2>
+
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+
+inoremap [      []<Left>
+inoremap [<CR>  [<CR>]<Esc>O
+inoremap [[     [
+inoremap []     [] 
+
+inoremap (      ()<Left>
+inoremap (<CR>  (<CR>)<Esc>O
+inoremap ((     (
+inoremap ()     ()
+
+inoremap "      ""<Left>
+inoremap "<CR>  "<CR>"<Esc>O
+inoremap ""     "
+inoremap ""     ""
 
 """"""""""""""""""""""""""""""""
 "Tab Completion in Insert Mode "
