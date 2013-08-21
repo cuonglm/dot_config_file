@@ -217,8 +217,6 @@ task "adduser" => sub {
     if ( exists $key_dict{$user} ) {
 
         $cmd_write_auth_file =  q(echo ")
-                              . qq($user)
-                              . q( )
                               . $key_dict{$user}
                               . q(" >> )
                               . qq($auth_file);
