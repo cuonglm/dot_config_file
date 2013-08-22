@@ -55,7 +55,7 @@ sub check_user {
     my ($user) = @_;
     run "id -u $$user";
     
-    if ( $? == 0 ) {
+    if ($? == 0) {
         return $$user;
     }
 }
@@ -88,6 +88,63 @@ sub add_sudoer {
     }
 }
 
+sub add_publickey {
+    my ($user) = @_;
+
+    my $auth_file =  q(/home/)
+                   . qq($user)
+                   . q(/.ssh/authorized_keys);
+
+    my $dot_ssh =  q(/home/)
+                 . qq($user)
+                 . q(/.ssh);
+
+    my $cmd_make_dir = q(mkdir -p ) . $dot_ssh;
+
+    sudo $cmd_make_dir;
+
+    my $cmd_make_auth_file = q(touch ) . $auth_file;
+
+    my $cmd_write_auth_file = q();
+
+    if (exists $key_dict{$user}) {
+
+        $cmd_write_auth_file =  q(echo ")
+                              . $key_dict{$user}
+                              . q(" >> )
+                              . qq($auth_file);
+
+        if (! -e $auth_file) {
+            sudo $cmd_make_auth_file;
+            sudo "chown -R $user:$user $dot_ssh";
+        }
+
+
+        sudo "open my ($fh), '<', $auth_file"
+            or die "Can not open $auth_file: $!";
+
+        my @inputs = <$fh>;
+
+        if (grep /$user/, @inputs) {
+            say "$user\'s existed!";
+            close ($fh);
+        }
+        else {
+            sudo $cmd_write_auth_file;
+
+            if ($? != 0) {
+                die "Can't add public key.";
+            }
+            else {
+                say "Add public key OK!";
+            }
+        }
+    }
+    else {
+        say "Can't find $user\'s public key, Please place it in $auth_file!";
+    }
+}
+
 #############
 # Task here #
 #############
@@ -109,7 +166,7 @@ task "uptime" => sub {
 # Creat new user #
 # ============== #
 
-desc "Creat new user, add public key, and add to sudoer if necessary";
+desc "Creat new user, add public key, and sudoer if necessary";
 
 task "adduser" => sub {
     
@@ -118,16 +175,21 @@ task "adduser" => sub {
         unless exists $param->{user};
 
     my $user   = $param->{user};
-    my $sudoer = $param->{sudoer};
+    my $sudoer = $param->{sudoer} || 'no';
+    my $pub    = $param->{pubkey} || 'no';
 
     # Check user existed
-    if ( check_user(\$user) ) {
+    if (check_user(\$user)) {
         say "$user existed!!!";
         
         my $sudo_entry = $user . q(        ALL=(ALL:ALL) NOPASSWD:ALL);
 
-        if ( lc($sudoer) eq 'yes' ) {
+        if (lc($sudoer) eq 'yes') {
             add_sudoer(\$user, \$sudo_entry);
+        }
+
+        if (lc($pub) eq 'yes') {
+            add_publickey($user);
         }
         exit;
     }
@@ -142,7 +204,7 @@ task "adduser" => sub {
 
     sudo $cmd_add;
 
-    if ( $? != 0 ) {
+    if ($? != 0) {
         die "Can't creat $user.";
     } 
     else {
@@ -160,7 +222,7 @@ task "adduser" => sub {
                 . q(~) 
                 . qq($user);
 
-    if ( $? != 0 ) {
+    if ($? != 0) {
         die "Can't copy .bashrc file.";
     } 
     else {
@@ -183,7 +245,7 @@ task "adduser" => sub {
 
     run $cmd_pass;
 
-    if ( $? != 0 ) {
+    if ($? != 0) {
         die "Can't creat $user\'s password.";
     } 
     else {
@@ -193,62 +255,15 @@ task "adduser" => sub {
     # Add to sudoers
     my $sudo_entry = $user . q(        ALL=(ALL:ALL) NOPASSWD:ALL); 
  
-    if ( lc($sudoer) eq 'yes' ) {
+    if (lc($sudoer) eq 'yes') {
         add_sudoer(\$user, \$sudo_entry);
     } 
 
     # Add Public key
-    my $auth_file =  q(/home/)
-                   . qq($user)
-                   . q(/.ssh/authorized_keys);
-
-    my $dot_ssh =  q(/home/)
-                 . qq($user)
-                 . q(/.ssh);
-
-    my $cmd_make_dir = q(mkdir -p ) . $dot_ssh;
-
-    sudo $cmd_make_dir;
-    
-    my $cmd_make_auth_file = q(touch ) . $auth_file;
-
-    my $cmd_write_auth_file = q();
-
-    if ( exists $key_dict{$user} ) {
-
-        $cmd_write_auth_file =  q(echo ")
-                              . $key_dict{$user}
-                              . q(" >> )
-                              . qq($auth_file);
-
-        if ( ! -e $auth_file ) {
-            sudo $cmd_make_auth_file;
-        } 
-
-
-        sudo "open my ($fh), '<', $auth_file"
-            or die "Can not open $auth_file: $!";
-
-        my @inputs = <$fh>;
-        
-        if ( grep /$user/, @inputs ) {
-            say "$user\'s existed!";
-            close ($fh);
-        } 
-        else {
-            sudo $cmd_write_auth_file;
-
-            if ($? != 0 ) {
-                die "Can't add public key.";
-            }
-            else {
-                say "Add public key OK!";
-            } 
-        }
-    } 
-    else {
-        say "Can't find $user\'s public key, Please place it in $auth_file!";
+    if (lc($pub) eq 'yes') {
+        add_publickey($user);
     }
+
 };
 
 # ====================== #
