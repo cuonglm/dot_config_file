@@ -104,6 +104,9 @@ autocmd FileType help only
 " Don't add comment automatically
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" Use system clipboard
+set clipboard=unnamedplus
+
 """""""""""""
 " bind keys "
 """""""""""""

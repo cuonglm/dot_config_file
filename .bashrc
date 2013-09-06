@@ -164,3 +164,8 @@ export PATH="/home/cuonglm/perl5/bin:$PATH";
 
 export TERM=xterm-256color
 export EDITOR="vim"
+
+ip_a() {
+    ifconfig | \
+    awk -F'[ :]+' '/^[a-z]/{i=$1}/inet addr:/{print i"\t"$4}'
+}
