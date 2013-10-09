@@ -107,6 +107,16 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Use system clipboard
 set clipboard=unnamedplus
 
+" Show long line indicator
+if v:version >= 703
+    augroup colorcolumn
+        autocmd!
+        autocmd FileType python setlocal colorcolumn=78
+        autocmd FileType c setlocal colorcolumn=80
+        autocmd FileType perl setlocal colorcolumn=72
+    augroup END
+endif
+
 """""""""""""
 " bind keys "
 """""""""""""
