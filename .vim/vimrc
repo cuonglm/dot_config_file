@@ -2,6 +2,8 @@
 " CuongLM aka Gnouc's vimrc file "
 """"""""""""""""""""""""""""""""""
 
+source $HOME/.vim/vimrc_bundle
+
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
@@ -136,6 +138,13 @@ augroup sls
 
     autocmd BufRead,BufNewFile *.sls call Slsconfig()
 augroup END
+
+" Python
+fun Python_config()
+    NeoBundleSource vim-python-pep8-indent
+    let g:pydiction_location = '~/.vim/bundle/pydiction/complete-dict'
+endf
+autocmd Filetype python :call Python_config()
 
 """""""""""""
 " bind keys "
