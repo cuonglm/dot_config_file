@@ -146,6 +146,9 @@ fun Python_config()
 endf
 autocmd Filetype python :call Python_config()
 
+"Javascript
+autocmd Filetype javascript set omnifunc=javascriptcomplete#CompleteJS
+
 """""""""""""
 " bind keys "
 """""""""""""

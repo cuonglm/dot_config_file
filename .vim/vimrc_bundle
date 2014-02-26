@@ -39,7 +39,8 @@ NeoBundle 'Glench/Vim-Jinja2-Syntax'
 "            \    },
 "            \ }
 NeoBundle 'rkulla/pydiction'
-
+"NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'pangloss/vim-javascript'
 
 filetype plugin indent on     " Required!
 
