@@ -78,8 +78,16 @@ set nowrap
 " Allow backspace over anything
 set backspace=indent,eol,start
 
+" Show full path file
+set laststatus=2
+set statusline=%<\ %F\ %m%r-\ FileType:\ %y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
+
+" List tree view
+let g:netrw_liststyle=3
+let g:netrw_browse_split=3
+
 " Open new buffer in new tab
-autocmd BufAdd,BufNewFile * nested tab sball
+"autocmd BufAdd,BufNewFile * nested tab sball
 
 " Set backup
 if has("vms")
