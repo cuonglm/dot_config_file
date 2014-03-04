@@ -177,7 +177,7 @@ inoremap jk <Esc>
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 nnoremap <silent> <F3> :set cuc! cul!<CR>
 nnoremap <silent> <F4> :set nu!<CR>
-nnoremap <silent> <F5> :Explore<CR>
+nnoremap <silent> <F5> :Texplore<CR>
 set pastetoggle=<F2>
 
 inoremap {      {}<Left>
