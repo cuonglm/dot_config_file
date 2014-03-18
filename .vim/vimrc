@@ -14,6 +14,9 @@ set background=dark
 " Syntax highlighting
 syntax enable
 
+" Set encoding
+set encoding=utf-8
+
 " Set colorscheme
 "colorscheme desert
 "colorscheme pyte
