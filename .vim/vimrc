@@ -166,6 +166,9 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 " HTML
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
+" PHP
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
 """""""""""""
 " bind keys "
 """""""""""""
