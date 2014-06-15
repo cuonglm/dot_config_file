@@ -173,6 +173,9 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 " PHP
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
+" YouCompleteMe
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
 """""""""""""
 " bind keys "
 """""""""""""
