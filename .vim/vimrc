@@ -89,8 +89,21 @@ set statusline=%<\ %F\ %m%r-\ FileType:\ %y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%
 let g:netrw_liststyle=3
 let g:netrw_browse_split=3
 
-" Open new buffer in new tab
-"autocmd BufAdd,BufNewFile * nested tab sball
+"" Highlight trailing white spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+" Highlight long lines
+highlight OverLength ctermbg=green ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+autocmd BufWinEnter * match OverLength /\%81v.\+/
+autocmd InsertEnter * match OverLength /\%81v.\+/
+autocmd InsertLeave * match OverLength /\%81v.\+/
+autocmd BufWinLeave * call clearmatches()
 
 " Set backup
 if has("vms")
@@ -202,7 +215,7 @@ inoremap {}     {}
 inoremap [      []<Left>
 inoremap [<CR>  [<CR>]<Esc>O
 inoremap [[     [
-inoremap []     [] 
+inoremap []     []
 
 inoremap (      ()<Left>
 inoremap (<CR>  (<CR>)<Esc>O
@@ -306,7 +319,7 @@ inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 " Vawa Plugin for VIM > 7.3 version 1.00
 " Maintainer: Sandeep.c.r<sandeepcr2@gmail.com>
 " Hacked for Perl by Curtis "Ovid" Poe <ovid@allaroundtheworld.fr>
- 
+
 function! s:vawa()
     call clearmatches()
     let s:temp          = getpos('.')
@@ -365,5 +378,5 @@ if(!exists("g:vawanoauto") || (g:vawanoauto == 1))
             au CursorMovedi *.t  call <sid>vawa()
     augroup END
 endif
- 
+
 command! Vawa :call <sid>vawa()
