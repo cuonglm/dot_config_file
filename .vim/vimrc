@@ -89,7 +89,7 @@ set statusline=%<\ %F\ %m%r-\ FileType:\ %y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%
 let g:netrw_liststyle=3
 let g:netrw_browse_split=3
 
-"" Highlight trailing white spaces
+" Highlight trailing white spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
@@ -104,6 +104,19 @@ autocmd BufWinEnter * match OverLength /\%81v.\+/
 autocmd InsertEnter * match OverLength /\%81v.\+/
 autocmd InsertLeave * match OverLength /\%81v.\+/
 autocmd BufWinLeave * call clearmatches()
+
+let s:long_line_active = 0 
+function! ToggleLongLine()
+    if s:long_line_active == 0
+        let s:long_line_active = 1 
+        match Search '\%>80v.\+'
+    else
+        let s:long_line_active = 0 
+        match none
+    endif
+endfunction
+
+nnoremap <S-l> :call ToggleLongLine()<CR>
 
 " Set backup
 if has("vms")
