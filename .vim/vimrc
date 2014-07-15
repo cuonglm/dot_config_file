@@ -32,6 +32,7 @@ let g:solarized_contrast   = "normal"
 let g:solarized_visibility = "normal"
 let g:solarized_hitrail    = 0
 let g:solarized_menu       = 1
+call togglebg#map("<C-b>")
 colorscheme solarized
 "colorscheme distinguished
 "colorscheme developer
@@ -39,7 +40,7 @@ colorscheme solarized
 
 " Enable file type detection
 if has("autocmd")
-  filetype plugin indent on
+    filetype plugin indent on
 endif
 
 " Do smart autoindenting when starting a new line
