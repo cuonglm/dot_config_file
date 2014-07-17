@@ -38,6 +38,11 @@ colorscheme solarized
 "colorscheme developer
 "colorscheme tidy
 
+" Fix color in tmux
+if &term =~ '256color'
+  set t_ut=
+endif
+
 " Enable file type detection
 if has("autocmd")
     filetype plugin indent on
