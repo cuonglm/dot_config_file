@@ -447,7 +447,7 @@ inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 " Vawa Plugin for VIM > 7.3 version 1.00
 " Maintainer: Sandeep.c.r<sandeepcr2@gmail.com>
 " Hacked for Perl by Curtis "Ovid" Poe <ovid@allaroundtheworld.fr>
-
+ 
 function! s:vawa()
     call clearmatches()
     let s:temp          = getpos('.')
@@ -484,7 +484,9 @@ function! s:vawa()
         let s:linebe = s:current_line + 1
         let s:colbf  = s:sigil_col + 1
         let s:prefix = '\(\%>'.s:lineab.'l.\%<'.s:linebe.'l.\%>'.s:colbf.'c\)\@!'
-    endif if(s:str == '$') return
+    endif
+    if(s:str == '$')
+        return
     endif
     if(strpart(s:str,0,1) == '>')
         let s:str = strpart(s:str ,1)
