@@ -348,8 +348,8 @@ inoremap (;<CR>  (<CR>);<Esc>O
 inoremap ((     (
 inoremap ()     ()
 
-nnoremap <leader>s :w!<CR>
-
+nnoremap <leader>s :up!<CR>
+a
 " save file with sudo
 cmap w!! w !sudo tee > /dev/null %
 
