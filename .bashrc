@@ -2,10 +2,10 @@
 # gnouc aka bino1810's .bashrc file.     #
 ##########################################
 
-# Executed by bash for non-login shells. 
+# Executed by bash for non-login shells.
 # If not running interactively, don't do anything
 case $- in
-    *i*) 
+    *i*)
          ;;
       *) return
          ;;
@@ -33,11 +33,11 @@ BGRED="\[\033[41m\]" # background red
 BGGREEN="\[\033[42m\]" # background green
 BGYELLOW="\[\033[43m\]" # background yellow
 BGBLUE="\[\033[44m\]" # background blue
-BGPURPLE="\[\033[45m\]" # background purple 
+BGPURPLE="\[\033[45m\]" # background purple
 BGCYAN="\[\033[46m\]" # background cyan
 BGWHITE="\[\033[47m\]" # background white
 
-# Setting history length 
+# Setting history length
 HISTSIZE=5000
 HISTFILESIZE=10000
 
@@ -73,7 +73,7 @@ if [ "$color_prompt" = yes ]
 then
     #PS1="${debian_chroot:+($debian_chroot)}${HC}${FGRED}\u${RS}:\$"
     #PS1="${debian_chroot:+($debian_chroot)}${HC}${FGRED}\u${RS}~% "
-    PS1="${HC}${FGYELLOW}%${RS}${HC}${FGGREEN} cuonglm${RS} ${FGYELLOW}at${RS} ${HC}${FGCYAN}\w${RS}\\n${HC}${FGYELLOW}%${RS} "
+    PS1="${HC}${FGYELLOW}%${RS}${HC}${FGRED} cuonglm${RS} ${FGYELLOW}at${RS} ${HC}${FGPURPLE}\w${RS}\\n${HC}${FGYELLOW}%${RS} "
     #PS1="=====\n\`if [ \$? = 0 ]; then echo \[\e[1m\]\[\e[32m\][^_^]\[\e[0m\]; else echo \[\e[1m\]\[\e[31m\][O_O]\[\e[0m\]; fi\`\n=====\n${HC}${FGYELLOW}%${RS} "
     #PS1="`printf "%*s\n" $(((5+$COLUMNS)/2)) '====='`\n\`if [ \$? = 0 ]; then printf "%*s" $(((42+$COLUMNS)/2)) \[\e[1m\]\[\e[32m\][^_^]\[\e[0m\]; else printf "%*s" $(((42+$COLUMNS)/2)) \[\e[1m\]\[\e[31m\][O_O]\[\e[0m\]; fi\`\n`printf "%*s\n" $(((5+$COLUMNS)/2)) '====='`\n${HC}${FGYELLOW}%${RS} "
 else
@@ -127,8 +127,9 @@ then
 fi
 
 # set variables for ibus
+export XMODIFIERS=”@im=ibus”
 export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
+export QT4_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
 
 # Start tmux when login ssh
@@ -165,7 +166,22 @@ export PATH="/home/cuonglm/perl5/bin:$PATH";
 export TERM=xterm-256color
 export EDITOR="vim"
 
-ip_a() {
-    ifconfig | \
-    awk -F'[ :]+' '/^[a-z]/{i=$1}/inet addr:/{print i"\t"$4}'
-}
+export PYTHONSTARTUP=~/.pythonrc
+
+source ~/perl5/perlbrew/etc/bashrc
+export PATH=$HOME/.cask/bin:$PATH
+
+/usr/bin/xinput set-prop 'ETPS/2 Elantech Touchpad' 'Device Enabled' 0
+source /usr/local/rvm/scripts/rvm
+
+# Go workspace
+if [ ! -d "$HOME/go" ]; then
+  mkdir "$HOME/go"
+  mkdir -p $GOPATH/src/github.com/Gnouc
+fi
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+export GOROOT=$HOME/sources/go
+export PATH=$PATH:$GOROOT/bin
