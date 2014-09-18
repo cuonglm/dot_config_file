@@ -349,7 +349,7 @@ inoremap ((     (
 inoremap ()     ()
 
 nnoremap <leader>s :up!<CR>
-a
+
 " save file with sudo
 cmap w!! w !sudo tee > /dev/null %
 
