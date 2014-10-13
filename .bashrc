@@ -185,3 +185,12 @@ export PATH=$PATH:$GOPATH/bin
 
 export GOROOT=$HOME/sources/go
 export PATH=$PATH:$GOROOT/bin
+
+# Path to sbt
+export PATH=$HOME/sbt/bin:$PATH
+
+# virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/codes
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper_lazy.sh
