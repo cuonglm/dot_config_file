@@ -36,6 +36,8 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'fatih/vim-go'
+NeoBundle 'awk.vim'
+NeoBundle 'sjl/gundo.vim'
 
 filetype plugin indent on     " Required!
 
