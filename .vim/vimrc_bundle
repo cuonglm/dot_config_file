@@ -38,6 +38,8 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'awk.vim'
 NeoBundle 'sjl/gundo.vim'
+NeoBundle 'vim-scripts/pep8'
+NeoBundle 'fs111/pydoc.vim'
 
 filetype plugin indent on     " Required!
 

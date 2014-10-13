@@ -348,13 +348,22 @@ inoremap (;<CR>  (<CR>);<Esc>O
 inoremap ((     (
 inoremap ()     ()
 
-nnoremap <leader>s :up!<CR>
+nnoremap \s :up!<CR>
+
+" remap keys to move around the windows
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
 
 " save file with sudo
 cmap w!! w !sudo tee > /dev/null %
 
 " toggle Gundo window
-map <leader>g :GundoToggle<CR>
+map \g :GundoToggle<CR>
+
+" pep8_map
+let g:pep8_map='\8'
 
 """"""""""""""""""
 " Custom tabline "
