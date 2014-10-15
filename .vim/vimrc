@@ -200,6 +200,10 @@ autocmd FileType html,markdown set omnifunc=htmlcomplete#CompleteTags
 " PHP
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
+" Haskell
+autocmd FileType haskell set omnifunc=necoghc#omnifunc
+let g:necoghc_enable_detailed_browse = 1
+
 " YouCompleteMe
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
@@ -341,6 +345,10 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
+
+" long lines as break lines
+map j gj
+map k gk
 
 " save file with sudo
 cmap w!! w !sudo tee > /dev/null %

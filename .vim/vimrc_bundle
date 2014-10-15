@@ -4,18 +4,22 @@ if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+"call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+call neobundle#end()
+
 " Recommended to install
-NeoBundle 'Shougo/vimproc', {
+NeoBundle 'Shougo/vimproc.vim', {
             \ 'build' : {
             \     'windows' : 'make -f make_mingw32.mak',
             \     'cygwin' : 'make -f make_cygwin.mak',
             \     'mac' : 'make -f make_mac.mak',
             \     'unix' : 'make -f make_unix.mak',
+            \     'linux' : 'make',
             \    },
             \ }
 
@@ -42,6 +46,8 @@ NeoBundle 'vim-scripts/pep8'
 NeoBundle 'fs111/pydoc.vim'
 NeoBundle 'ervandew/supertab'
 NeoBundle 'mileszs/ack.vim'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'eagletmt/neco-ghc'
 
 filetype plugin indent on     " Required!
 
