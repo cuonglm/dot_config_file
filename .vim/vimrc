@@ -9,7 +9,11 @@ source $HOME/.vim/vimrc_bundle
 set nocompatible
 
 " Set background
-set background=light
+if has("gui_running")
+    set background=dark
+else
+    set background=light
+endif
 
 " Syntax highlighting
 syntax enable

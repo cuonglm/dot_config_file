@@ -197,3 +197,18 @@ source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 # Path for cabal
 PATH=$HOME/.cabal/bin:$PATH
+
+# Ansible hosts
+export ANSIBLE_HOSTS=~/ansible_hosts
+
+dualmonitor() {
+  xrandr --output VGA-0 --right-of LVDS
+}
+
+ptouch() {
+  for p in "$@"; do
+    _dir="$(dirname "$p")"
+    [ -d "$_dir" ] || mkdir -p -- "$_dir"
+    touch -- "$p"
+  done
+}
