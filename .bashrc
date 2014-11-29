@@ -212,3 +212,5 @@ ptouch() {
     touch -- "$p"
   done
 }
+
+export VAGRANT_HOME=/media/Data/vagrant
