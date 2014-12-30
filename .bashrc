@@ -5,10 +5,8 @@
 # Executed by bash for non-login shells.
 # If not running interactively, don't do anything
 case $- in
-    *i*)
-         ;;
-      *) return
-         ;;
+  (*i*) : ;;
+  (*) return ;;
 esac
 
 # Don't put duplicate lines/lines starting with space in the history.
@@ -46,61 +44,54 @@ HISTFILESIZE=10000
 shopt -s checkwinsize
 
 # set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]
-then
-    debian_chroot=$(cat /etc/debian_chroot)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+  debian_chroot="$(cat /etc/debian_chroot)"
 fi
 
 # set a fancy prompt
 case "$TERM" in
-    xterm-color) color_prompt=yes
-    ;;
+  (xterm-color) color_prompt=yes ;;
 esac
 
 force_color_prompt=yes
 
-if [ -n "$force_color_prompt" ]
-then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null
-then
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
+if [ -n "$force_color_prompt" ]; then
+  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    color_prompt=yes
+  else
+    color_prompt=
+  fi
 fi
 
-if [ "$color_prompt" = yes ]
-then
-    #PS1="${debian_chroot:+($debian_chroot)}${HC}${FGRED}\u${RS}:\$"
-    #PS1="${debian_chroot:+($debian_chroot)}${HC}${FGRED}\u${RS}~% "
-    PS1="${HC}${FGYELLOW}%${RS}${HC}${FGRED} cuonglm${RS} ${FGYELLOW}at${RS} ${HC}${FGPURPLE}\w${RS}\\n${HC}${FGYELLOW}%${RS} "
-    #PS1="=====\n\`if [ \$? = 0 ]; then echo \[\e[1m\]\[\e[32m\][^_^]\[\e[0m\]; else echo \[\e[1m\]\[\e[31m\][O_O]\[\e[0m\]; fi\`\n=====\n${HC}${FGYELLOW}%${RS} "
-    #PS1="`printf "%*s\n" $(((5+$COLUMNS)/2)) '====='`\n\`if [ \$? = 0 ]; then printf "%*s" $(((42+$COLUMNS)/2)) \[\e[1m\]\[\e[32m\][^_^]\[\e[0m\]; else printf "%*s" $(((42+$COLUMNS)/2)) \[\e[1m\]\[\e[31m\][O_O]\[\e[0m\]; fi\`\n`printf "%*s\n" $(((5+$COLUMNS)/2)) '====='`\n${HC}${FGYELLOW}%${RS} "
+if [ "$color_prompt" = yes ]; then
+  #PS1="${debian_chroot:+($debian_chroot)}${HC}${FGRED}\u${RS}:\$"
+  #PS1="${debian_chroot:+($debian_chroot)}${HC}${FGRED}\u${RS}~% "
+  PS1="${HC}${FGYELLOW}%${RS}${HC}${FGRED} cuonglm${RS} ${FGYELLOW}at${RS} ${HC}${FGPURPLE}\w${RS}\\n${HC}${FGYELLOW}%${RS} "
+  #PS1="=====\n\`if [ \$? = 0 ]; then echo \[\e[1m\]\[\e[32m\][^_^]\[\e[0m\]; else echo \[\e[1m\]\[\e[31m\][O_O]\[\e[0m\]; fi\`\n=====\n${HC}${FGYELLOW}%${RS} "
+  #PS1="`printf "%*s\n" $(((5+$COLUMNS)/2)) '====='`\n\`if [ \$? = 0 ]; then printf "%*s" $(((42+$COLUMNS)/2)) \[\e[1m\]\[\e[32m\][^_^]\[\e[0m\]; else printf "%*s" $(((42+$COLUMNS)/2)) \[\e[1m\]\[\e[31m\][O_O]\[\e[0m\]; fi\`\n`printf "%*s\n" $(((5+$COLUMNS)/2)) '====='`\n${HC}${FGYELLOW}%${RS} "
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\$ '
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\$ '
 fi
+
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
+  (xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1" ;;
+  (*) : ;;
 esac
 
 # enable color support of ls and also some other aliases
-if [ -x /usr/bin/dircolors ]
-then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+if [ -x /usr/bin/dircolors ]; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+  #alias dir='dir --color=auto'
+  #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
 fi
 
 # ls aliases
@@ -109,19 +100,15 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # Can put alias in ,bash_aliases file
-if [ -f ~/.bash_aliases ]
-then
-    . ~/.bash_aliases
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
 fi
 
 # enable programmable completion features
-if ! shopt -oq posix
-then
-  if [ -f /usr/share/bash-completion/bash_completion ]
-  then
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]
-  then
+  elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
 fi
@@ -168,11 +155,12 @@ export EDITOR="vim"
 
 export PYTHONSTARTUP=~/.pythonrc
 
-source ~/perl5/perlbrew/etc/bashrc
-export PATH=$HOME/.cask/bin:$PATH
+. ~/perl5/perlbrew/etc/bashrc
+
+export PATH="$HOME/.cask/bin:$PATH"
 
 /usr/bin/xinput set-prop 'ETPS/2 Elantech Touchpad' 'Device Enabled' 0
-source /usr/local/rvm/scripts/rvm
+. /usr/local/rvm/scripts/rvm
 
 # Go workspace
 if [ ! -d "$HOME/go" ]; then
@@ -193,7 +181,7 @@ export PATH=$HOME/sbt/bin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/codes
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper_lazy.sh
+. /usr/local/bin/virtualenvwrapper_lazy.sh
 
 # Path for cabal
 PATH=$HOME/.cabal/bin:$PATH
@@ -214,3 +202,9 @@ ptouch() {
 }
 
 export VAGRANT_HOME=/media/Data/vagrant
+
+# The next line updates PATH for the Google Cloud SDK.
+. '/home/cuonglm/google-cloud-sdk/path.bash.inc'
+
+# The next line enables bash completion for gcloud.
+. '/home/cuonglm/google-cloud-sdk/completion.bash.inc'
