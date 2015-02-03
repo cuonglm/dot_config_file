@@ -46,10 +46,13 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx python)
+plugins=(git python)
+case "$(uname)" in
+  (Darwin) plugins+=osx ;;
+  (*) : ;;
+esac
 
 # User configuration
-
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -80,3 +83,78 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# set variables for ibus
+export XMODIFIERS=”@im=ibus”
+export GTK_IM_MODULE=ibus
+export QT4_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+
+export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:/home/cuonglm/perl5";
+export PERL_MB_OPT="--install_base /home/cuonglm/perl5";
+export PERL_MM_OPT="INSTALL_BASE=/home/cuonglm/perl5";
+export PERL5LIB="/home/cuonglm/perl5/lib/perl5:$PERL5LIB";
+export PATH="/home/cuonglm/perl5/bin:$PATH";
+
+export TERM=xterm-256color
+
+export PYTHONSTARTUP=~/.pythonrc
+
+. ~/perl5/perlbrew/etc/bashrc
+
+export PATH="$HOME/.cask/bin:$PATH"
+
+/usr/bin/xinput set-prop 'ETPS/2 Elantech Touchpad' 'Device Enabled' 0
+#. /usr/local/rvm/scripts/rvm
+
+# Go workspace
+if [ ! -d "$HOME/go" ]; then
+  mkdir "$HOME/go"
+  mkdir -p $GOPATH/src/github.com/Gnouc
+fi
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+export GOROOT=$HOME/sources/go
+export PATH=$PATH:$GOROOT/bin
+
+# virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/codes
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+. /usr/local/bin/virtualenvwrapper_lazy.sh
+
+# Path for cabal
+PATH=$HOME/.cabal/bin:$PATH
+
+# Ansible hosts
+export ANSIBLE_HOSTS=~/ansible_hosts
+
+dualmonitor() {
+  xrandr --output VGA-0 --right-of LVDS
+}
+
+ptouch() {
+  for p in "$@"; do
+    _dir="$(dirname "$p")"
+    [ -d "$_dir" ] || mkdir -p -- "$_dir"
+    touch -- "$p"
+  done
+}
+
+export VAGRANT_HOME=/media/Data/vagrant
+
+if [ -n "$ZSH_VERSION" ]; then
+  # The next line updates PATH for the Google Cloud SDK.
+  . '/home/cuonglm/google-cloud-sdk/path.zsh.inc'
+
+  # The next line enables bash completion for gcloud.
+  . '/home/cuonglm/google-cloud-sdk/completion.zsh.inc'
+else
+  # The next line updates PATH for the Google Cloud SDK.
+  . '/home/cuonglm/google-cloud-sdk/path.bash.inc'
+
+  # The next line enables bash completion for gcloud.
+  . '/home/cuonglm/google-cloud-sdk/completion.bash.inc'
+fi

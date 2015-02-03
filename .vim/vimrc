@@ -308,6 +308,9 @@ set completeopt=menuone,longest,preview
 " Ack
 nmap \a <Esc>:Ack!
 
+" JSON format
+command Json execute "%!python -m json.tool"
+
 """""""""""""
 " bind keys "
 """""""""""""
