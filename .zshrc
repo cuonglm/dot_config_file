@@ -84,6 +84,12 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/codes
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+. /usr/local/bin/virtualenvwrapper_lazy.sh
+
 if [ "$(uname)" != "Darwin" ]; then
   # set variables for ibus
   export XMODIFIERS=”@im=ibus”
@@ -119,12 +125,6 @@ if [ "$(uname)" != "Darwin" ]; then
 
   export GOROOT=$HOME/sources/go
   export PATH=$PATH:$GOROOT/bin
-
-  # virtualenvwrapper
-  export WORKON_HOME=$HOME/.virtualenvs
-  export PROJECT_HOME=$HOME/codes
-  export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-  . /usr/local/bin/virtualenvwrapper_lazy.sh
 
   # Path for cabal
   PATH=$HOME/.cabal/bin:$PATH
