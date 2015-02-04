@@ -48,6 +48,7 @@ NeoBundle 'ervandew/supertab'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
+NeoBundle 'davidhalter/jedi-vim'
 
 filetype plugin indent on     " Required!
 
