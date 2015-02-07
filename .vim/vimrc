@@ -192,6 +192,7 @@ augroup END
 fun Python_config()
     NeoBundleSource vim-python-pep8-indent
     let g:pydiction_location = '~/.vim/bundle/pydiction/complete-dict'
+    let g:jedi#popup_on_dot = 0
 endf
 autocmd Filetype python :call Python_config()
 
