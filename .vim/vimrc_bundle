@@ -49,6 +49,9 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'tpope/vim-fugitive'
 
 filetype plugin indent on     " Required!
 
