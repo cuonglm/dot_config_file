@@ -112,7 +112,6 @@ if [ "$(uname)" != "Darwin" ]; then
   export PATH="$HOME/.cask/bin:$PATH"
 
   /usr/bin/xinput set-prop 'ETPS/2 Elantech Touchpad' 'Device Enabled' 0
-  #. /usr/local/rvm/scripts/rvm
 
   # Go workspace
   if [ ! -d "$HOME/go" ]; then
@@ -159,4 +158,6 @@ if [ "$(uname)" != "Darwin" ]; then
     # The next line enables bash completion for gcloud.
     . '/home/cuonglm/google-cloud-sdk/completion.bash.inc'
   fi
+
+  . /usr/local/rvm/scripts/rvm
 fi
