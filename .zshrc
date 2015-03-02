@@ -84,6 +84,9 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Time format
+TIMEFMT=$'\n%E real\n%U user\n%S sys'
+
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/codes
@@ -107,7 +110,7 @@ if [ "$(uname)" != "Darwin" ]; then
 
   export PYTHONSTARTUP=~/.pythonrc
 
-  . ~/perl5/perlbrew/etc/bashrc
+  #. ~/perl5/perlbrew/etc/bashrc
 
   export PATH="$HOME/.cask/bin:$PATH"
 
@@ -126,7 +129,7 @@ if [ "$(uname)" != "Darwin" ]; then
   export PATH=$PATH:$GOROOT/bin
 
   # Path for cabal
-  PATH=$HOME/.cabal/bin:$PATH
+  #PATH=$HOME/.cabal/bin:$PATH
 
   # Ansible hosts
   export ANSIBLE_HOSTS=~/ansible_hosts
