@@ -209,6 +209,14 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType haskell set omnifunc=necoghc#omnifunc
 let g:necoghc_enable_detailed_browse = 1
 
+" Lua
+fun Lua_config()
+    let g:lua_safe_omni_modules = 0
+    let g:lua_define_omnifunc = 0
+    let g:lua_complete_omni = 0
+endf
+autocmd Filetype lua :call Lua_config()
+
 " YouCompleteMe
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 

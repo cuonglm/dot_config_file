@@ -146,7 +146,7 @@ if [ "$(uname)" != "Darwin" ]; then
     done
   }
 
-  export VAGRANT_HOME=/media/Data/vagrant
+  export VAGRANT_HOME=/media/cuonglm/Data/vagrant
 
   if [ -n "$ZSH_VERSION" ]; then
     # The next line updates PATH for the Google Cloud SDK.
@@ -162,5 +162,8 @@ if [ "$(uname)" != "Darwin" ]; then
     . '/home/cuonglm/google-cloud-sdk/completion.bash.inc'
   fi
 
-  . /usr/local/rvm/scripts/rvm
+  #. /usr/local/rvm/scripts/rvm
+
+  # Lua
+  export PATH=$PATH:~/sources/lua-5.3.0/install/bin
 fi

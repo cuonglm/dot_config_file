@@ -52,6 +52,8 @@ NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-lua-ftplugin'
 
 filetype plugin indent on     " Required!
 
