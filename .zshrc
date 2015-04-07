@@ -67,6 +67,9 @@ export LANG=en_US.UTF-8
 #else
 #  export EDITOR='mvim'
 #fi
+if [ -f "/usr/local/bin/vim" ]; then
+  alias vim='/usr/local/bin/vim'
+fi
 export EDITOR='vim'
 
 # Compilation flags
