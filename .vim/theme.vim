@@ -120,13 +120,6 @@ augroup hlsearch
     autocmd InsertLeave * :setlocal hlsearch
 augroup END
 
-" Show help full screen
-autocmd FileType help only
-
-" Open help in new tab
-cabbrev help tab help
-cabbrev h tab h
-
 " Don't add comment automatically
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 

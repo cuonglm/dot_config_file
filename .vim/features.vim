@@ -18,3 +18,10 @@ set clipboard=unnamedplus
 
 " JSON format
 command Json execute "%!python -m json.tool"
+
+" Show help full screen
+autocmd FileType help only
+
+" Open help in new tab
+cabbrev help tab help
+cabbrev h tab h
