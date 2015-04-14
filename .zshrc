@@ -96,6 +96,10 @@ export PROJECT_HOME=$HOME/codes
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 . /usr/local/bin/virtualenvwrapper_lazy.sh
 
+# Lua
+export PATH=$PATH:~/sources/lua-5.3.0/install/bin
+
+# Linux only
 if [ "$(uname)" != "Darwin" ]; then
   # set variables for ibus
   export XMODIFIERS=”@im=ibus”
@@ -166,7 +170,4 @@ if [ "$(uname)" != "Darwin" ]; then
   fi
 
   #. /usr/local/rvm/scripts/rvm
-
-  # Lua
-  export PATH=$PATH:~/sources/lua-5.3.0/install/bin
 fi
