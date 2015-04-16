@@ -66,3 +66,8 @@ nnoremap <right> <nop>
 
 " Ack
 nmap \a <Esc>:Ack!
+
+" OSX need "*y for yanking
+if has('mac')
+    vnoremap y "*y
+endif
