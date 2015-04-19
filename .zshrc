@@ -99,6 +99,13 @@ export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 # Lua
 export PATH=$PATH:~/sources/lua-5.3.0/install/bin
 
+# Perl
+export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:$HOME/perl5"
+export PERL_MB_OPT="--install_base $HOME/perl5"
+export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
+export PERL5LIB="$HOME/perl5/lib/perl5:$PERL5LIB"
+export PATH="$HOME/perl5/bin:$PATH"
+
 # Linux only
 if [ "$(uname)" != "Darwin" ]; then
   # set variables for ibus
@@ -106,12 +113,6 @@ if [ "$(uname)" != "Darwin" ]; then
   export GTK_IM_MODULE=ibus
   export QT4_IM_MODULE=ibus
   export QT_IM_MODULE=ibus
-
-  export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:/home/cuonglm/perl5";
-  export PERL_MB_OPT="--install_base /home/cuonglm/perl5";
-  export PERL_MM_OPT="INSTALL_BASE=/home/cuonglm/perl5";
-  export PERL5LIB="/home/cuonglm/perl5/lib/perl5:$PERL5LIB";
-  export PATH="/home/cuonglm/perl5/bin:$PATH";
 
   export TERM=xterm-256color
 
