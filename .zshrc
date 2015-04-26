@@ -48,7 +48,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git python)
 case "$(uname)" in
-  (Darwin) plugins+=osx ;;
+  (Darwin) plugins+=(osx brew) ;;
   (*) : ;;
 esac
 
