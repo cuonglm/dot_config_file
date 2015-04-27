@@ -2,7 +2,7 @@
 " Custom tabline "
 """"""""""""""""""
 set tabline=%!MyTabLine()
-function MyTabLine()
+fun! MyTabLine()
     let s = '' " complete tabline goes here
     " loop through each tab page
     for t in range(tabpagenr('$'))
@@ -76,7 +76,7 @@ endfunction
 "Tab Completion in Insert Mode "
 """"""""""""""""""""""""""""""""
 
-function! Tab_Or_Complete()
+fun! Tab_Or_Complete()
   if col('.') > 1 && strpart( getline('.'), col('.') - 2, 3 ) =~ '^\w'
     return "\<C-N>"
   else

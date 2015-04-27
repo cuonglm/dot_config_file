@@ -106,6 +106,9 @@ export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
 export PERL5LIB="$HOME/perl5/lib/perl5:$PERL5LIB"
 export PATH="$HOME/perl5/bin:$PATH"
 
+# Cask
+export PATH="$HOME/.cask/bin:$PATH"
+
 # Linux only
 if [ "$(uname)" != "Darwin" ]; then
   # set variables for ibus
@@ -119,8 +122,6 @@ if [ "$(uname)" != "Darwin" ]; then
   export PYTHONSTARTUP=~/.pythonrc
 
   #. ~/perl5/perlbrew/etc/bashrc
-
-  export PATH="$HOME/.cask/bin:$PATH"
 
   /usr/bin/xinput set-prop 'ETPS/2 Elantech Touchpad' 'Device Enabled' 0
 

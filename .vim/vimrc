@@ -14,3 +14,9 @@ source $HOME/.vim/plugins.vim
 source $HOME/.vim/custom_functions.vim
 source $HOME/.vim/custom_filetype.vim
 source $HOME/.vim/binding.vim
+
+augroup vimrc_reload
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc,*.vim so $MYVIMRC |
+                \ if has('gui_running') | so $MYGVIMRC | endif
+augroup END

@@ -10,17 +10,23 @@ set dir=~/.vim/backup/
 
 " Back to last edited line
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    augroup last_edited_line
+        au!
+        au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    augroup END
 endif
 
 " Use system clipboard
 set clipboard=unnamedplus
 
 " JSON format
-command Json execute "%!python -m json.tool"
+command! Json execute "%!python -m json.tool"
 
 " Show help full screen
-autocmd FileType help only
+augroup full_screen
+    au!
+    au FileType help only
+augroup END
 
 " Open help in new tab
 cabbrev help tab help

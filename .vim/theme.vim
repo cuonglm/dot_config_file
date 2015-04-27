@@ -38,8 +38,11 @@ syntax enable
 set encoding=utf-8
 
 " Enable file type detection
-if has("autocmd")
-    filetype plugin indent on
+if has("au")
+    augroup file_type
+        au!
+        filetype plugin indent on
+    augroup END
 endif
 
 " Do smart autoindenting when starting a new line
@@ -102,34 +105,43 @@ let g:netrw_browse_split=3
 
 " NerdTree
 nnoremap <C-n> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+augroup nerd_tree
+    au!
+    au StdinReadPre * let s:std_in=1
+    au VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+augroup END
 
 " Highlight trailing white spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+augroup highlight_trailing_spaces
+    au!
+    au BufWinEnter * match ExtraWhitespace /\s\+$/
+    au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+    au InsertLeave * match ExtraWhitespace /\s\+$/
+    au BufWinLeave * call clearmatches()
+augroup END
 
 " Turn off highlight search in insert mode
 augroup hlsearch
-    autocmd!
-    autocmd InsertEnter * :setlocal nohlsearch
-    autocmd InsertLeave * :setlocal hlsearch
+    au!
+    au InsertEnter * :setlocal nohlsearch
+    au InsertLeave * :setlocal hlsearch
 augroup END
 
 " Don't add comment automatically
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+augroup auto_comment
+    au!
+    au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+augroup END
 
 " Show long line indicator
 if v:version >= 703
     augroup colorcolumn
-        autocmd!
-        autocmd FileType python setlocal colorcolumn=78
-        autocmd FileType c setlocal colorcolumn=80
-        autocmd FileType cpp setlocal colorcolumn=80
-        autocmd FileType perl setlocal colorcolumn=100
+        au!
+        au FileType python setlocal colorcolumn=78
+        au FileType c setlocal colorcolumn=80
+        au FileType cpp setlocal colorcolumn=80
+        au FileType perl setlocal colorcolumn=100
     augroup END
 endif
