@@ -38,9 +38,8 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'fatih/vim-go'
-NeoBundle 'awk.vim'
+NeoBundle 'awk-support.vim'
 NeoBundle 'sjl/gundo.vim'
-NeoBundleLazy 'vim-scripts/pep8'
 NeoBundle 'fs111/pydoc.vim'
 NeoBundle 'ervandew/supertab'
 NeoBundle 'mileszs/ack.vim'
@@ -52,6 +51,7 @@ NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-lua-ftplugin'
+NeoBundleLazy 'vim-scripts/pep8'
 
 call neobundle#end()
 
