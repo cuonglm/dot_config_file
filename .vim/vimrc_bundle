@@ -25,7 +25,6 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-git'
 NeoBundle 'tejr/vim-nagios'
-NeoBundleLazy 'hynek/vim-python-pep8-indent'
 NeoBundle 'Glench/Vim-Jinja2-Syntax'
 "NeoBundle 'Valloric/YouCompleteMe', {
 "            \ 'build' : {
@@ -51,7 +50,9 @@ NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-lua-ftplugin'
+NeoBundle 'scrooloose/syntastic'
 NeoBundleLazy 'vim-scripts/pep8'
+NeoBundleLazy 'hynek/vim-python-pep8-indent'
 
 call neobundle#end()
 

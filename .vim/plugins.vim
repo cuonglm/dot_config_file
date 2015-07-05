@@ -66,3 +66,10 @@ let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
+
+" Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_python_checkers = ['flake8', 'python']
+let g:syntastic_sh_checkers = ['shellcheck', 'sh']
+let g:syntastic_ignore_files = ['^/usr/include/', '\c\.h$']
