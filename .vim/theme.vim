@@ -139,7 +139,7 @@ augroup END
 if v:version >= 703
     augroup colorcolumn
         au!
-        au FileType python setlocal colorcolumn=78
+        au FileType python setlocal colorcolumn=79
         au FileType c setlocal colorcolumn=80
         au FileType cpp setlocal colorcolumn=80
         au FileType perl setlocal colorcolumn=100
