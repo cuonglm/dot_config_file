@@ -88,7 +88,7 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Time format
-TIMEFMT=$'\n%E real\n%U user\n%S sys'
+TIMEFMT=$'=====\nJOB %J\n%P    cpu\n%E real\n%U user\n%S sys'
 
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
