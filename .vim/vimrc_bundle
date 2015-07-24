@@ -53,6 +53,8 @@ NeoBundle 'xolox/vim-lua-ftplugin'
 NeoBundle 'scrooloose/syntastic'
 "NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'honza/dockerfile.vim'
+NeoBundle 'chase/vim-ansible-yaml'
+NeoBundle 'stephpy/vim-yaml'
 NeoBundleLazy 'vim-scripts/pep8'
 NeoBundleLazy 'hynek/vim-python-pep8-indent'
 
