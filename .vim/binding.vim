@@ -2,8 +2,8 @@
 " bind keys "
 """""""""""""
 
-map \c i{<Esc>ea}<Esc>
-map \p i(<Esc>ea)<Esc>
+map \c i{{<Esc>ea}<Esc>
+map \p i((<Esc>ea)<Esc>
 map \q i'<Esc>ea'<Esc>
 map \dq i"<Esc>ea"<Esc>
 map \C :%s///gn<CR>
