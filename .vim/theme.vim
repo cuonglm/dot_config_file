@@ -145,3 +145,6 @@ if v:version >= 703
         au FileType perl setlocal colorcolumn=100
     augroup END
 endif
+
+" Keep some lines around cursor
+set so=5
