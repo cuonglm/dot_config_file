@@ -51,7 +51,7 @@ cmap w!! w !sudo tee > /dev/null %
 map \g :GundoToggle<CR>
 
 " pep8_map
-let g:pep8_map='\8'
+let g:pep8_map='\c8'
 
 " Do not use arrow keys
 inoremap <up> <nop>

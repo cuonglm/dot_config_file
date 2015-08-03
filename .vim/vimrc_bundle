@@ -55,6 +55,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'honza/dockerfile.vim'
 NeoBundle 'chase/vim-ansible-yaml'
 NeoBundle 'stephpy/vim-yaml'
+NeoBundle 'bling/vim-airline'
 NeoBundleLazy 'vim-scripts/pep8'
 NeoBundleLazy 'hynek/vim-python-pep8-indent'
 
