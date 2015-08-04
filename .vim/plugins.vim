@@ -72,6 +72,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_python_checkers = ['flake8', 'python']
 let g:syntastic_sh_checkers = ['shellcheck', 'sh']
+let g:syntastic_go_checkers = ['golint', 'gotype', 'govet']
+let g:syntastic_go_golint_args = "-min_confidence=0"
+let g:go_fmt_fail_silently = 1
 let g:syntastic_ignore_files = ['^/usr/include/', '\c\.h$']
 
 " airline
@@ -98,3 +101,12 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
+
+" vim-go
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_auto_type_info = 1
+let g:go_fmt_autosave = 1

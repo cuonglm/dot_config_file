@@ -70,3 +70,14 @@ augroup shell
     au!
     au Filetype sh,zsh,tcsh,csh :call Set_tab_spaces(2)
 augroup END
+
+" Go
+augroup go
+    au!
+    fun! Golang_config()
+        colorscheme molokai
+        let g:molokai_original = 1
+        let g:rehash256 = 1
+    endf
+    au filetype go :call Golang_config()
+augroup END
