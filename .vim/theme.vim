@@ -1,15 +1,13 @@
-" Set background
-if has("gui_running")
-    set background=dark
-else
-    set background=light
-endif
-
 " Set colorscheme
 "colorscheme desert
 "colorscheme pyte
 "colorscheme grb256
 "colorscheme vividchalk
+"colorscheme distinguished
+"colorscheme developer
+"colorscheme tidy
+call togglebg#map("<C-b>")
+colorscheme solarized
 let g:solarized_termcolors = 256
 let g:solarized_termtrans  = 0
 let g:solarized_degrade    = 0
@@ -20,11 +18,13 @@ let g:solarized_contrast   = "normal"
 let g:solarized_visibility = "normal"
 let g:solarized_hitrail    = 0
 let g:solarized_menu       = 1
-call togglebg#map("<C-b>")
-colorscheme solarized
-"colorscheme distinguished
-"colorscheme developer
-"colorscheme tidy
+
+" Set background
+if has("gui_running")
+    set background=dark
+else
+    set background=light
+endif
 
 " Fix color in tmux
 if &term =~ '256color'
