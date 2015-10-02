@@ -6,7 +6,7 @@
 "colorscheme distinguished
 "colorscheme developer
 "colorscheme tidy
-call togglebg#map("<C-b>")
+call togglebg#map("<Leader>b")
 colorscheme solarized
 let g:solarized_termcolors = 256
 let g:solarized_termtrans  = 0
