@@ -2,37 +2,26 @@
 " bind keys "
 """""""""""""
 
-map \c i{{<Esc>ea}<Esc>
-map \p i((<Esc>ea)<Esc>
-map \q i'<Esc>ea'<Esc>
-map \dq i"<Esc>ea"<Esc>
-map \C :%s///gn<CR>
+" Counting number of occurences
+map \c :%s///gn<CR>
 
-inoremap jk <Esc>
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-nnoremap <silent> <F3> :set cuc! cul!<CR>
-nnoremap <silent> <F4> :set nu!<CR>
-nnoremap <silent> <F5> :Texplore<CR>
-set pastetoggle=<F2>
-
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {;<CR>  {<CR>};<Esc>O
-inoremap {{     {
-inoremap {}     {}
-
-inoremap [      []<Left>
-inoremap [<CR>  [<CR>]<Esc>O
-inoremap [[     [
-inoremap []     []
-
-inoremap (      ()<Left>
-inoremap (<CR>  (<CR>)<Esc>O
-inoremap (;<CR>  (<CR>);<Esc>O
-inoremap ((     (
-inoremap ()     ()
-
+" Quick write
 nnoremap \s :up!<CR>
+
+" jk as Escape
+inoremap jk <Esc>
+
+" Space to turn off highlight search
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" Toggle highlight column and row
+nnoremap <silent> <F3> :set cuc! cul!<CR>
+
+" Toggle line number
+nnoremap <silent> <F4> :set nu!<CR>
+
+" F2 to toggle paste mode
+set pastetoggle=<F2>
 
 " remap keys to move around the windows
 map <c-j> <c-w>j
@@ -71,3 +60,21 @@ nmap \a <Esc>:Ack!
 if has('mac')
     vnoremap y "*y
 endif
+
+" Personal quick typing
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {;<CR>  {<CR>};<Esc>O
+inoremap {{     {
+inoremap {}     {}
+
+inoremap [      []<Left>
+inoremap [<CR>  [<CR>]<Esc>O
+inoremap [[     [
+inoremap []     []
+
+inoremap (      ()<Left>
+inoremap (<CR>  (<CR>)<Esc>O
+inoremap (;<CR>  (<CR>);<Esc>O
+inoremap ((     (
+inoremap ()     ()

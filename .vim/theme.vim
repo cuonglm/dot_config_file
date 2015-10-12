@@ -99,10 +99,6 @@ set backspace=indent,eol,start
 set laststatus=2
 set statusline=%<\ %F\ %m%r-\ FileType:\ %y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
 
-" List tree view
-let g:netrw_liststyle=3
-let g:netrw_browse_split=3
-
 " NerdTree
 nnoremap <C-n> :NERDTreeToggle<CR>
 augroup nerd_tree

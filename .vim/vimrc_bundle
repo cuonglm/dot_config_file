@@ -58,6 +58,7 @@ NeoBundle 'stephpy/vim-yaml'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'tpope/vim-surround'
 NeoBundleLazy 'vim-scripts/pep8'
 NeoBundleLazy 'hynek/vim-python-pep8-indent'
 
