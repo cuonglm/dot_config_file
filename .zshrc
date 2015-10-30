@@ -1,3 +1,13 @@
+# Change this to 1 for profiling
+_prof=0
+if [ "$_prof" -eq 1 ]; then
+  zmodload zsh/datetime
+  setopt prompt_subst
+  PS4='$EPOCHREALTIME %N:%i> '
+  exec 3>&2 2>"/tmp/zsh_prof.$$"
+  setopt xtrace
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -149,7 +159,7 @@ if [ "$(uname)" != "Darwin" ]; then
 
   ptouch() {
     for p in "$@"; do
-      _dir="$(dirname "$p")"
+      _dir=${p%/*}
       [ -d "$_dir" ] || mkdir -p -- "$_dir"
       touch -- "$p"
     done
@@ -157,19 +167,18 @@ if [ "$(uname)" != "Darwin" ]; then
 
   export VAGRANT_HOME=/media/cuonglm/Data/vagrant
 
-  if [ -n "$ZSH_VERSION" ]; then
-    # The next line updates PATH for the Google Cloud SDK.
-    . '/home/cuonglm/google-cloud-sdk/path.zsh.inc'
+  # The next line updates PATH for the Google Cloud SDK.
+  . '/home/cuonglm/google-cloud-sdk/path.zsh.inc'
 
-    # The next line enables bash completion for gcloud.
-    . '/home/cuonglm/google-cloud-sdk/completion.zsh.inc'
-  else
-    # The next line updates PATH for the Google Cloud SDK.
-    . '/home/cuonglm/google-cloud-sdk/path.bash.inc'
-
-    # The next line enables bash completion for gcloud.
-    . '/home/cuonglm/google-cloud-sdk/completion.bash.inc'
-  fi
+  # The next line enables zsh completion for gcloud.
+  . '/home/cuonglm/google-cloud-sdk/completion.zsh.inc'
 
   #. /usr/local/rvm/scripts/rvm
+fi
+
+# Cleaning up after profiling
+if [ "$_prof" -eq 1 ]; then
+  zmodload -u zsh/datetime
+  unsetopt xtrace
+  exec 2>&3 3>&-
 fi
