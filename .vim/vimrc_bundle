@@ -60,6 +60,7 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'xolox/vim-session'
+NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundleLazy 'vim-scripts/pep8'
 NeoBundleLazy 'hynek/vim-python-pep8-indent'
 
