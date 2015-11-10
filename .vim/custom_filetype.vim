@@ -81,3 +81,14 @@ augroup go
     endf
     au filetype go :call Golang_config()
 augroup END
+
+" Jinja
+augroup jinja
+    au!
+    fun! Jinja_config()
+        " Need this line for matchit work with html tags
+        " with jinja filetype
+        source $VIMRUNTIME/ftplugin/html.vim
+    endf
+    au filetype jinja :call Jinja_config()
+augroup END

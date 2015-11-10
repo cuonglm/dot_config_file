@@ -31,3 +31,6 @@ augroup END
 " Open help in new tab
 cabbrev help tab help
 cabbrev h tab h
+
+" Enable matchit
+runtime macros/matchit.vim
