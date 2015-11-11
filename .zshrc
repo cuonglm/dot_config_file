@@ -119,6 +119,10 @@ export PATH="$HOME/perl5/bin:$PATH"
 # Cask
 export PATH="$HOME/.cask/bin:$PATH"
 
+# Stow
+export STOW_DIR="/usr/local/stow"
+alias sustow='sudo STOW_DIR="$STOW_DIR"'
+
 # Linux only
 if [ "$(uname)" != "Darwin" ]; then
   # set variables for ibus
