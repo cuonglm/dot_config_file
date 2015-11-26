@@ -24,7 +24,7 @@ augroup python
         let g:pydiction_location = '~/.vim/bundle/pydiction/complete-dict'
         let g:jedi#popup_on_dot = 0
     endf
-    au Filetype python :call Python_config()
+    au FileType python :call Python_config()
 augroup END
 
 " Javascript
@@ -62,13 +62,13 @@ augroup lua
         let g:lua_complete_omni = 0
         call Set_tab_spaces(2)
     endf
-    au Filetype lua :call Lua_config()
+    au FileType lua :call Lua_config()
 augroup END
 
 " Shell
 augroup shell
     au!
-    au Filetype sh,zsh,tcsh,csh :call Set_tab_spaces(2)
+    au FileType sh,zsh,tcsh,csh :call Set_tab_spaces(2)
 augroup END
 
 " Go
@@ -79,7 +79,7 @@ augroup go
         let g:molokai_original = 1
         let g:rehash256 = 1
     endf
-    au filetype go :call Golang_config()
+    au FileType go :call Golang_config()
 augroup END
 
 " Jinja
@@ -90,5 +90,5 @@ augroup jinja
         " with jinja filetype
         source $VIMRUNTIME/ftplugin/html.vim
     endf
-    au filetype jinja :call Jinja_config()
+    au FileType jinja :call Jinja_config()
 augroup END

@@ -61,6 +61,7 @@ NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'xolox/vim-session'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
+NeoBundle 'nickhutchinson/vim-systemtap'
 NeoBundleLazy 'vim-scripts/pep8'
 NeoBundleLazy 'hynek/vim-python-pep8-indent'
 
