@@ -171,12 +171,6 @@ if [ "$(uname)" != "Darwin" ]; then
 
   export VAGRANT_HOME=/media/cuonglm/Data/vagrant
 
-  # The next line updates PATH for the Google Cloud SDK.
-  . '/home/cuonglm/google-cloud-sdk/path.zsh.inc'
-
-  # The next line enables zsh completion for gcloud.
-  . '/home/cuonglm/google-cloud-sdk/completion.zsh.inc'
-
   #. /usr/local/rvm/scripts/rvm
 fi
 
