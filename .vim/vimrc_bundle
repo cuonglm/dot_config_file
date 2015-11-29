@@ -23,7 +23,6 @@ NeoBundle 'Shougo/vimproc.vim', {
 
 " My Bundle
 NeoBundle 'tpope/vim-markdown'
-NeoBundle 'tpope/vim-git'
 NeoBundle 'tejr/vim-nagios'
 NeoBundle 'Glench/Vim-Jinja2-Syntax'
 "NeoBundle 'Valloric/YouCompleteMe', {
