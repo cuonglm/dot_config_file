@@ -75,11 +75,9 @@ augroup END
 augroup go
     au!
     fun! Golang_config()
-        colorscheme molokai
-        let g:molokai_original = 1
-        let g:rehash256 = 1
+        colorscheme Tomorrow-Night-Eighties
     endf
-    au FileType go :call Golang_config()
+    "au FileType go :call Golang_config()
 augroup END
 
 " Jinja
