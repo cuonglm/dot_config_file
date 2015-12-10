@@ -63,6 +63,9 @@ let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 " https://github.com/c9s/perlomni.vim
 let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
+" Make others completion work with neocomplete
+let g:neocomplcache_force_overwrite_completefunc = 1
+
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
