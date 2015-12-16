@@ -75,9 +75,11 @@ augroup END
 augroup go
     au!
     fun! Golang_config()
-        colorscheme Tomorrow-Night-Eighties
+        "colorscheme Tomorrow-Night-Eighties
+        set noexpandtab
+        set tabstop=8
     endf
-    "au FileType go :call Golang_config()
+    au FileType go :call Golang_config()
 augroup END
 
 " Jinja
