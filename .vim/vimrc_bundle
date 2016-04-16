@@ -63,6 +63,7 @@ NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'nickhutchinson/vim-systemtap'
 NeoBundle 'justmao945/vim-clang'
 NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'majutsushi/tagbar'
 NeoBundleLazy 'vim-scripts/pep8'
 NeoBundleLazy 'hynek/vim-python-pep8-indent'
 
