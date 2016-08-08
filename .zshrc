@@ -123,6 +123,21 @@ export PATH="$HOME/.cask/bin:$PATH"
 export STOW_DIR="/usr/local/stow"
 alias sustow='sudo STOW_DIR="$STOW_DIR"'
 
+# Go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export GOROOT=$HOME/sources/go
+export PATH=$PATH:$GOROOT/bin
+
+# Go workspace
+if [ ! -d "$HOME/go" ]; then
+  mkdir "$HOME/go"
+  mkdir -p $GOPATH/src/github.com/Gnouc
+fi
+
+# Ansible hosts
+export ANSIBLE_HOSTS=~/ansible_hosts
+
 # Linux only
 if [ "$(uname)" != "Darwin" ]; then
   # set variables for ibus
@@ -139,23 +154,8 @@ if [ "$(uname)" != "Darwin" ]; then
 
   /usr/bin/xinput set-prop 'ETPS/2 Elantech Touchpad' 'Device Enabled' 0
 
-  # Go workspace
-  if [ ! -d "$HOME/go" ]; then
-    mkdir "$HOME/go"
-    mkdir -p $GOPATH/src/github.com/Gnouc
-  fi
-
-  export GOPATH=$HOME/go
-  export PATH=$PATH:$GOPATH/bin
-
-  export GOROOT=$HOME/sources/go
-  export PATH=$PATH:$GOROOT/bin
-
   # Path for cabal
   #PATH=$HOME/.cabal/bin:$PATH
-
-  # Ansible hosts
-  export ANSIBLE_HOSTS=~/ansible_hosts
 
   dualmonitor() {
     xrandr --output VGA-0 --right-of LVDS
