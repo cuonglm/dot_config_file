@@ -14,6 +14,7 @@ source $HOME/.vim/plugins.vim
 source $HOME/.vim/custom_functions.vim
 source $HOME/.vim/custom_filetype.vim
 source $HOME/.vim/binding.vim
+source $HOME/.vim/nvim.vim
 
 augroup vimrc_reload
     au!
