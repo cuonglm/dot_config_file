@@ -18,6 +18,139 @@ export ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="random"
 
+ZSH_THEME_RANDOM_CANDIDATES=(
+  "3den"
+  "Soliah"
+  "af-magic"
+  "afowler"
+  "agnoster"
+  "alanpeabody"
+  "amuse"
+  "apple"
+  "arrow"
+  "aussiegeek"
+  "avit"
+  "awesomepanda"
+  "bira"
+  "blinks"
+  "bureau"
+  "candy"
+  "clean"
+  "cloud"
+  "crcandy"
+  "crunch"
+  "cypher"
+  "dallas"
+  "darkblood"
+  "daveverwer"
+  "dieter"
+  "dogenpunk"
+  "dpoggi"
+  "dst"
+  "dstufft"
+  "duellj"
+  "eastwood"
+  "edvardm"
+  "essembeh"
+  "evan"
+  "example"
+  "fino-time"
+  "fino"
+  "fishy"
+  "flazz"
+  "fletcherm"
+  "fox"
+  "frisk"
+  "frontcube"
+  "funky"
+  "fwalch"
+  "gallifrey"
+  "gallois"
+  "garyblessington"
+  "gentoo"
+  "geoffgarside"
+  "gianu"
+  "gnzh"
+  "gozilla"
+  "half-life"
+  "imajes"
+  "intheloop"
+  "itchy"
+  "jaischeema"
+  "jbergantine"
+  "jispwoso"
+  "jnrowe"
+  "jonathan"
+  "josh"
+  "jreese"
+  "jtriley"
+  "juanghurtado"
+  "junkfood"
+  "kafeitu"
+  "kardan"
+  "kennethreitz"
+  "kolo"
+  "kphoen"
+  "lambda"
+  "linuxonly"
+  "lukerandall"
+  "macovsky-ruby"
+  "macovsky"
+  "maran"
+  "mgutz"
+  "mh"
+  "michelebologna"
+  "mikeh"
+  "miloshadzic"
+  "minimal"
+  "mortalscumbag"
+  "mrtazz"
+  "murilasso"
+  "muse"
+  "nanotech"
+  "nebirhos"
+  "nicoulaj"
+  "norm"
+  "obraun"
+  "peepcode"
+  "philips"
+  "pmcgee"
+  "pure"
+  "pygmalion"
+  "re5et"
+  "refined"
+  "rgm"
+  "risto"
+  "rixius"
+  "robbyrussell"
+  "sammy"
+  "simonoff"
+  "simple"
+  "skaro"
+  "smt"
+  "sonicradish"
+  "sorin"
+  "sporty_256"
+  "steeef"
+  "strug"
+  "sunaku"
+  "sunrise"
+  "superjarin"
+  "suvash"
+  "takashiyoshida"
+  "terminalparty"
+  "theunraveler"
+  "tjkirch"
+  "tjkirch_mod"
+  "tonotdo"
+  "wezm+"
+  "wezm"
+  "xiong-chiamiov-plus"
+  "xiong-chiamiov"
+  "ys"
+  "zhann"
+)
+
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
 
@@ -56,7 +189,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python docker docker-compose golang)
+plugins=(git python docker docker-compose golang colored-man-pages)
 case "$(uname)" in
   (Darwin) plugins+=(osx brew) ;;
   (*) : ;;
@@ -65,6 +198,9 @@ esac
 # User configuration
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
+
+# For zsh 5.4.x
+setopt ALIAS_FUNC_DEF 2> /dev/null
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,14 +236,8 @@ export EDITOR='vim'
 # Time format
 TIMEFMT=$'=====\nJOB %J\n%P    cpu\n%E real\n%U user\n%S sys'
 
-# virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/codes
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-. /usr/local/bin/virtualenvwrapper_lazy.sh
-
 # Lua
-export PATH=$PATH:~/sources/lua-5.3.0/install/bin
+export "PATH=$PATH:~/sources/lua-5.3.0/install/bin"
 
 # Perl
 export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:$HOME/perl5"
@@ -138,6 +268,42 @@ fi
 # Ansible hosts
 export ANSIBLE_HOSTS=~/ansible_hosts
 
+# Git
+if [ -f "/usr/local/bin/git" ]; then
+  alias git='/usr/local/bin/git'
+fi
+
+# Emacs
+if [ -f "/Applications/Emacs.app/Contents/MacOS/Emacs" ]; then
+  alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
+fi
+
+# Perl 6
+export PATH="/usr/local/stow/perl6/share/perl6/site/bin:$PATH"
+
+# Zsh
+if [ -f "/usr/local/bin/zsh" ]; then
+  alias zsh='/usr/local/bin/zsh'
+fi
+
+# Rust
+export PATH="$PATH:$HOME/.cargo/bin"
+
+# Perlbrew
+if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
+  .  ~/perl5/perlbrew/etc/bashrc
+fi
+
+# Perlbrew
+if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
+  . "$HOME/perl5/perlbrew/etc/bashrc"
+fi
+
+export PYTHONSTARTUP=~/.pythonrc
+
+# Path for cabal
+export PATH="$HOME/.cabal/bin:$PATH"
+
 # Linux only
 if [ "$(uname)" != "Darwin" ]; then
   # set variables for ibus
@@ -148,14 +314,7 @@ if [ "$(uname)" != "Darwin" ]; then
 
   export TERM=xterm-256color
 
-  export PYTHONSTARTUP=~/.pythonrc
-
-  #. ~/perl5/perlbrew/etc/bashrc
-
-  /usr/bin/xinput set-prop 'ETPS/2 Elantech Touchpad' 'Device Enabled' 0
-
-  # Path for cabal
-  #PATH=$HOME/.cabal/bin:$PATH
+  # /usr/bin/xinput set-prop 'ETPS/2 Elantech Touchpad' 'Device Enabled' 1
 
   dualmonitor() {
     xrandr --output VGA-0 --right-of LVDS
@@ -170,13 +329,57 @@ if [ "$(uname)" != "Darwin" ]; then
   }
 
   export VAGRANT_HOME=/media/cuonglm/Data/vagrant
-
-  #. /usr/local/rvm/scripts/rvm
 fi
+
+# Repetition input, http://unix.stackexchange.com/a/315462/38906
+repeat-string() {
+  REPLY=
+  repeat $1 REPLY+=$2
+}
+
+expand-repeat() {
+  emulate -L zsh
+  set -o rematchpcre
+  local match mbegin mend MATCH MBEGIN MEND REPLY
+  if [[ $LBUFFER =~ '^(.*?)([[:alnum:]]+)(.)$' ]]; then
+    repeat-string $((36#$match[2])) $match[3]
+    LBUFFER=$match[1]$REPLY
+  else
+    return 1
+  fi
+}
+zle -N expand-repeat
+bindkey "$terminfo[kf8]" expand-repeat
 
 # Cleaning up after profiling
 if [ "$_prof" -eq 1 ]; then
   zmodload -u zsh/datetime
   unsetopt xtrace
   exec 2>&3 3>&-
+fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/cuonglm/google-cloud-sdk/path.zsh.inc' ]; then source '/home/cuonglm/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/cuonglm/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/cuonglm/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# QT
+export QT_VERSION=5.9.1
+export QT_DIR="$HOME/Qt5.9.1"
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# pipenv
+#compdef pipenv
+_pipenv() {
+  eval $(env COMMANDLINE="${words[1,$CURRENT]}" _PIPENV_COMPLETE=complete-zsh  pipenv)
+}
+if [[ "$(basename ${(%):-%x})" != "_pipenv" ]]; then
+  autoload -U compinit && compinit
+  compdef _pipenv pipenv
 fi
