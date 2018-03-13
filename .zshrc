@@ -19,7 +19,6 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="random"
 
 ZSH_THEME_RANDOM_CANDIDATES=(
-  "3den"
   "Soliah"
   "af-magic"
   "afowler"
@@ -54,8 +53,6 @@ ZSH_THEME_RANDOM_CANDIDATES=(
   "essembeh"
   "evan"
   "example"
-  "fino-time"
-  "fino"
   "fishy"
   "flazz"
   "fletcherm"
@@ -75,7 +72,6 @@ ZSH_THEME_RANDOM_CANDIDATES=(
   "half-life"
   "imajes"
   "intheloop"
-  "itchy"
   "jaischeema"
   "jbergantine"
   "jispwoso"
@@ -369,7 +365,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # QT
 export QT_VERSION=5.9.1
-export QT_DIR="$HOME/Qt5.9.1"
+export QT_DIR="$HOME/Qt"
 
 # direnv
 eval "$(direnv hook zsh)"
