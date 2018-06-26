@@ -64,6 +64,7 @@ NeoBundle 'justmao945/vim-clang'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'chrisbra/unicode.vim'
 NeoBundleLazy 'vim-scripts/pep8'
 NeoBundleLazy 'hynek/vim-python-pep8-indent'
 
