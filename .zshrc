@@ -58,7 +58,6 @@ ZSH_THEME_RANDOM_CANDIDATES=(
   "fletcherm"
   "fox"
   "frisk"
-  "frontcube"
   "funky"
   "fwalch"
   "gallifrey"
@@ -252,8 +251,6 @@ alias sustow='sudo STOW_DIR="$STOW_DIR"'
 # Go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-export GOROOT=$HOME/sources/go
-export PATH=$PATH:$GOROOT/bin
 
 # Go workspace
 if [ ! -d "$HOME/go" ]; then
@@ -347,13 +344,6 @@ expand-repeat() {
 zle -N expand-repeat
 bindkey "$terminfo[kf8]" expand-repeat
 
-# Cleaning up after profiling
-if [ "$_prof" -eq 1 ]; then
-  zmodload -u zsh/datetime
-  unsetopt xtrace
-  exec 2>&3 3>&-
-fi
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/cuonglm/google-cloud-sdk/path.zsh.inc' ]; then source '/home/cuonglm/google-cloud-sdk/path.zsh.inc'; fi
 
@@ -378,4 +368,11 @@ _pipenv() {
 if [[ "$(basename ${(%):-%x})" != "_pipenv" ]]; then
   autoload -U compinit && compinit
   compdef _pipenv pipenv
+fi
+
+# Cleaning up after profiling
+if [ "$_prof" -eq 1 ]; then
+  zmodload -u zsh/datetime
+  unsetopt xtrace
+  exec 2>&3 3>&-
 fi
