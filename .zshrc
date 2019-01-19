@@ -370,6 +370,9 @@ if [[ "$(basename ${(%):-%x})" != "_pipenv" ]]; then
   compdef _pipenv pipenv
 fi
 
+# ssh
+alias ssh-wp='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no '
+
 # Cleaning up after profiling
 if [ "$_prof" -eq 1 ]; then
   zmodload -u zsh/datetime
