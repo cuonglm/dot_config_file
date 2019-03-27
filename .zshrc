@@ -227,6 +227,7 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ssh-nopubkey='ssh -o PubkeyAuthentication=no '
 
 # Time format
 TIMEFMT=$'=====\nJOB %J\n%P    cpu\n%E real\n%U user\n%S sys'
