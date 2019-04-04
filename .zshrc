@@ -184,7 +184,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python docker docker-compose golang colored-man-pages kubectl terraform)
+plugins=(git python docker docker-compose golang colored-man-pages kubectl terraform github)
 case "$(uname)" in
   (Darwin) plugins+=(osx brew) ;;
   (*) : ;;
