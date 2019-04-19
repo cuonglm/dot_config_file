@@ -322,7 +322,7 @@ if [ "$(uname)" != "Darwin" ]; then
     done
   }
 
-  export VAGRANT_HOME=/media/cuonglm/Data/vagrant
+  export VAGRANT_HOME=/home/cuonglm/.vagrant
 fi
 
 # Repetition input, http://unix.stackexchange.com/a/315462/38906
