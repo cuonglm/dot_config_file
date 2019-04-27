@@ -78,3 +78,7 @@ inoremap (<CR>  (<CR>)<Esc>O
 inoremap (;<CR>  (<CR>);<Esc>O
 inoremap ((     (
 inoremap ()     ()
+
+" vim-go
+nnoremap <silent> gs :GoSameIdsToggle<CR>
+nnoremap <silent> gr :GoReferrers<CR>
