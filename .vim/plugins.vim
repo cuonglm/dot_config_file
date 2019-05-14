@@ -75,7 +75,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_python_checkers = ['flake8', 'python']
 let g:syntastic_sh_checkers = ['shellcheck', 'checkbashisms', 'sh']
-let g:syntastic_go_checkers = ['golint', 'gotype', 'govet']
+let g:syntastic_go_checkers = ['golint', 'govet']
 let g:syntastic_go_golint_args = "-min_confidence=0"
 let g:go_fmt_fail_silently = 1
 let g:syntastic_ignore_files = ['^/usr/include/', '\c\.h$']
