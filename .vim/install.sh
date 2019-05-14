@@ -2,7 +2,7 @@
 
 # Create dummy .vimrc file
 [ -f ~/.vimrc ] && mv ~/.vimrc{,_bak}
-cp ~/.vim/vimrc ~/.vimrc
+cp ~/.vim/init.vim ~/.vimrc
 
 # Create backup dir
 mkdir ~/.vim/backup 2>/dev/null
