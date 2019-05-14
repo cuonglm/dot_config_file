@@ -251,7 +251,7 @@ alias sustow='sudo STOW_DIR="$STOW_DIR"'
 
 # Go
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export PATH=$HOME/sources/go/bin:$PATH:$GOPATH/bin
 
 # Go workspace
 if [ ! -d "$HOME/go" ]; then
