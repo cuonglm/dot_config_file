@@ -75,6 +75,7 @@ augroup END
 augroup go
     au!
     fun! Golang_config()
+        call Set_tab_spaces(4)
         set noexpandtab
     endf
     au FileType go :call Golang_config()
