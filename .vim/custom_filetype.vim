@@ -77,6 +77,7 @@ augroup go
     fun! Golang_config()
         call Set_tab_spaces(8)
         set noexpandtab
+        setlocal omnifunc=go#complete#GocodeComplete
     endf
     au FileType go :call Golang_config()
 augroup END
