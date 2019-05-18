@@ -75,7 +75,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_python_checkers = ['flake8', 'python']
 let g:syntastic_sh_checkers = ['shellcheck', 'checkbashisms', 'sh']
-let g:syntastic_go_checkers = ['golint', 'govet']
+let g:syntastic_go_checkers = ['golangci_lint']
 let g:syntastic_go_golint_args = "-min_confidence=0"
 let g:go_fmt_fail_silently = 1
 let g:syntastic_ignore_files = ['^/usr/include/', '\c\.h$']
@@ -121,6 +121,7 @@ let g:go_fmt_command = "goimports"
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
+let g:go_list_type = "quickfix"
 
 " vim-session
 let g:session_autosave = 'no'
