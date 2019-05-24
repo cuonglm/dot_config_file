@@ -83,5 +83,5 @@ inoremap ()     ()
 nnoremap <silent> gs :GoSameIdsToggle<CR>
 nnoremap <silent> gr :GoReferrers<CR>
 
-nnoremap <silent> ln :lnext<CR>
-nnoremap <silent> lp :lNext<CR>
+nnoremap <silent> en :lnext<CR>
+nnoremap <silent> ep :lNext<CR>
