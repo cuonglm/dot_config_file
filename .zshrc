@@ -374,6 +374,9 @@ fi
 # ssh
 alias ssh-wp='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no '
 
+# gccgo
+alias go-gcc='LD_LIBRARY_PATH=/usr/local/stow/gccgo/lib64 go '
+
 # Cleaning up after profiling
 if [ "$_prof" -eq 1 ]; then
   zmodload -u zsh/datetime
