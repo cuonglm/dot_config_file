@@ -1,0 +1,21 @@
+{
+    "go.autocompleteUnimportedPackages": true,
+    "go.buildOnSave": "off",
+    "go.lintTool": "golangci-lint",
+    "go.useCodeSnippetsOnFunctionSuggest": true,
+    "editor.tabSize": 8,
+    "go.formatTool": "goimports",
+    "workbench.colorTheme": "Solarized Light",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "terminal.explorerKind": "external",
+    "terminal.integrated.shell.linux": "/usr/local/bin/zsh",
+    "go.gotoSymbol.includeGoroot": true,
+    "go.gocodeAutoBuild": true,
+    "terminal.integrated.scrollback": 10000,
+    "go.gotoSymbol.includeImports": true,
+    "editor.formatOnSaveTimeout": 5000,
+    "python.analysis.symbolsHierarchyDepthLimit": 100,
+    "python.formatting.provider": "none",
+    "window.zoomLevel": 0
+}
