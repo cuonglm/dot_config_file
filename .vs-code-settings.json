@@ -17,5 +17,47 @@
     "editor.formatOnSaveTimeout": 5000,
     "python.analysis.symbolsHierarchyDepthLimit": 100,
     "python.formatting.provider": "none",
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "gitlens.menus": {
+        "editor": {
+            "blame": true,
+            "clipboard": true,
+            "compare": true,
+            "details": true,
+            "history": true,
+            "remote": false
+        },
+        "editorGroup": {
+            "blame": true,
+            "compare": true
+        },
+        "editorTab": {
+            "clipboard": true,
+            "compare": true,
+            "history": true,
+            "remote": true
+        },
+        "explorer": {
+            "clipboard": true,
+            "compare": true,
+            "history": true,
+            "remote": true
+        },
+        "scmGroup": {
+            "compare": true,
+            "openClose": true,
+            "stash": true,
+            "stashInline": true
+        },
+        "scmItem": {
+            "clipboard": true,
+            "compare": true,
+            "history": true,
+            "remote": true,
+            "stash": true
+        }
+    },
+    "gitlens.currentLine.scrollable": false,
+    "go.lintOnSave": "off",
+    "editor.codeActionsOnSaveTimeout": 30000
 }
