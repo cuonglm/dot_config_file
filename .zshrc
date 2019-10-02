@@ -184,7 +184,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python docker docker-compose golang colored-man-pages kubectl terraform github)
+plugins=(git python docker docker-compose golang colored-man-pages kubectl terraform github aws)
 case "$(uname)" in
   (Darwin) plugins+=(osx brew) ;;
   (*) : ;;
@@ -250,14 +250,8 @@ export STOW_DIR="/usr/local/stow"
 alias sustow='sudo STOW_DIR="$STOW_DIR"'
 
 # Go
-export GOPATH=$HOME/go
-export PATH=$HOME/sources/go/bin:$PATH:$GOPATH/bin
-
-# Go workspace
-if [ ! -d "$HOME/go" ]; then
-  mkdir "$HOME/go"
-  mkdir -p $GOPATH/src/github.com/Gnouc
-fi
+export GOPATH="$HOME/go"
+export PATH="$HOME/sources/go/bin:$PATH:$GOPATH/bin"
 
 # Ansible hosts
 export ANSIBLE_HOSTS=~/ansible_hosts
