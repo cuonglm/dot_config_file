@@ -375,3 +375,6 @@ if [ "$_prof" -eq 1 ]; then
   unsetopt xtrace
   exec 2>&3 3>&-
 fi
+
+# opam configuration
+test -r /home/cuonglm/.opam/opam-init/init.zsh && . /home/cuonglm/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
