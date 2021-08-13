@@ -290,32 +290,39 @@ export PYTHONSTARTUP=~/.pythonrc
 # Path for cabal
 export PATH="$HOME/.cabal/bin:$PATH"
 
-# Linux only
-if [ "$(uname)" != "Darwin" ]; then
-  # set variables for ibus
-  export XMODIFIERS=”@im=ibus”
-  export GTK_IM_MODULE=ibus
-  export QT4_IM_MODULE=ibus
-  export QT_IM_MODULE=ibus
+case "$(uname)" in
+  "Linux")
+    # set variables for ibus
+    export XMODIFIERS=”@im=ibus”
+    export GTK_IM_MODULE=ibus
+    export QT4_IM_MODULE=ibus
+    export QT_IM_MODULE=ibus
 
-  export TERM=xterm-256color
+    export TERM=xterm-256color
 
-  # /usr/bin/xinput set-prop 'ETPS/2 Elantech Touchpad' 'Device Enabled' 1
+    # /usr/bin/xinput set-prop 'ETPS/2 Elantech Touchpad' 'Device Enabled' 1
 
-  dualmonitor() {
-    xrandr --output VGA-0 --right-of LVDS
-  }
+    dualmonitor() {
+      xrandr --output VGA-0 --right-of LVDS
+    }
 
-  ptouch() {
-    for p in "$@"; do
-      _dir=${p%/*}
-      [ -d "$_dir" ] || mkdir -p -- "$_dir"
-      touch -- "$p"
-    done
-  }
+    ptouch() {
+      for p in "$@"; do
+        _dir=${p%/*}
+        [ -d "$_dir" ] || mkdir -p -- "$_dir"
+        touch -- "$p"
+      done
+    }
 
-  export VAGRANT_HOME=/home/cuonglm/.vagrant
-fi
+    export VAGRANT_HOME=/home/cuonglm/.vagrant
+    ;;
+  "Darwin")
+    # Homebrew
+    export PATH="$PATH:/opt/homebrew/bin"
+
+    unalias ipython
+    ;;
+esac
 
 # Repetition input, http://unix.stackexchange.com/a/315462/38906
 repeat-string() {
