@@ -385,3 +385,6 @@ fi
 
 # opam configuration
 test -r /home/cuonglm/.opam/opam-init/init.zsh && . /home/cuonglm/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# nixos
+if [ -e /Users/cuonglm/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/cuonglm/.nix-profile/etc/profile.d/nix.sh; fi
