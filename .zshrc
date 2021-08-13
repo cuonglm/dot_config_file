@@ -15,7 +15,6 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
 ZSH_THEME="random"
 
 ZSH_THEME_RANDOM_CANDIDATES=(
@@ -189,7 +188,7 @@ case "$(uname)" in
 esac
 
 # User configuration
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin"
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # For zsh 5.4.x
@@ -231,28 +230,36 @@ alias ssh-nopubkey='ssh -o PubkeyAuthentication=no '
 TIMEFMT=$'=====\nJOB %J\n%P    cpu\n%E real\n%U user\n%S sys'
 
 # Lua
-export "PATH=$PATH:~/sources/lua-5.3.0/install/bin"
+if [ -n "$use_lua" ]; then
+  export "PATH=$PATH:~/sources/lua-5.3.0/install/bin"
+fi
 
 # Perl
-export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:$HOME/perl5"
-export PERL_MB_OPT="--install_base $HOME/perl5"
-export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
-export PERL5LIB="$HOME/perl5/lib/perl5:$PERL5LIB"
-export PATH="$HOME/perl5/bin:$PATH"
+if [ -n "$use_perl" ]; then
+  export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:$HOME/perl5"
+  export PERL_MB_OPT="--install_base $HOME/perl5"
+  export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
+  export PERL5LIB="$HOME/perl5/lib/perl5:$PERL5LIB"
+  export PATH="$HOME/perl5/bin:$PATH"
+
+  # Perlbrew
+  if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
+    . "$HOME/perl5/perlbrew/etc/bashrc"
+  fi
+fi
 
 # Cask
 export PATH="$HOME/.cask/bin:$PATH"
 
 # Stow
-export STOW_DIR="/usr/local/stow"
-alias sustow='sudo STOW_DIR="$STOW_DIR"'
+if command -v stow >/dev/null 2>&1; then
+  export STOW_DIR="/usr/local/stow"
+  alias sustow='sudo STOW_DIR="$STOW_DIR"'
+fi
 
 # Go
 export GOPATH="$HOME/go"
-export PATH="$HOME/sources/go/bin:$PATH:$GOPATH/bin"
-
-# Ansible hosts
-export ANSIBLE_HOSTS=~/ansible_hosts
+export PATH="$HOME/sources/go/bin:$GOPATH/bin:$PATH"
 
 # Git
 if [ -f "/usr/local/bin/git" ]; then
@@ -264,8 +271,10 @@ if [ -f "/Applications/Emacs.app/Contents/MacOS/Emacs" ]; then
   alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
 fi
 
-# Perl 6
-export PATH="/usr/local/stow/perl6/share/perl6/site/bin:$PATH"
+# Rakudo
+if command -v raku >/dev/null 2>&1; then
+  export PATH="/usr/local/stow/rakudo/share/perl6/site/bin:$PATH"
+fi
 
 # Zsh
 if [ -f "/usr/local/bin/zsh" ]; then
@@ -273,22 +282,14 @@ if [ -f "/usr/local/bin/zsh" ]; then
 fi
 
 # Rust
-export PATH="$PATH:$HOME/.cargo/bin"
-
-# Perlbrew
-if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
-  .  ~/perl5/perlbrew/etc/bashrc
-fi
-
-# Perlbrew
-if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
-  . "$HOME/perl5/perlbrew/etc/bashrc"
-fi
+export PATH="$HOME/.cargo/bin:$PATH"
 
 export PYTHONSTARTUP=~/.pythonrc
 
 # Path for cabal
-export PATH="$HOME/.cabal/bin:$PATH"
+if command -v cabal >/dev/null 2>&1; then
+  export PATH="$HOME/.cabal/bin:$PATH"
+fi
 
 case "$(uname)" in
   "Linux")
@@ -318,7 +319,7 @@ case "$(uname)" in
     ;;
   "Darwin")
     # Homebrew
-    export PATH="$PATH:/opt/homebrew/bin"
+    export PATH="/opt/homebrew/bin:$PATH"
 
     unalias ipython
     ;;
@@ -350,25 +351,8 @@ if [ -f '/home/cuonglm/google-cloud-sdk/path.zsh.inc' ]; then source '/home/cuon
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/cuonglm/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/cuonglm/google-cloud-sdk/completion.zsh.inc'; fi
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-# QT
-export QT_VERSION=5.9.1
-export QT_DIR="$HOME/Qt"
-
 # direnv
 eval "$(direnv hook zsh)"
-
-# pipenv
-#compdef pipenv
-_pipenv() {
-  eval $(env COMMANDLINE="${words[1,$CURRENT]}" _PIPENV_COMPLETE=complete-zsh  pipenv)
-}
-if [[ "$(basename ${(%):-%x})" != "_pipenv" ]]; then
-  autoload -U compinit && compinit
-  compdef _pipenv pipenv
-fi
 
 # ssh
 alias ssh-wp='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no '
