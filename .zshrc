@@ -257,10 +257,6 @@ if command -v stow >/dev/null 2>&1; then
   alias sustow='sudo STOW_DIR="$STOW_DIR"'
 fi
 
-# Go
-export GOPATH="$HOME/go"
-export PATH="$HOME/sources/go/bin:$GOPATH/bin:$PATH"
-
 # Git
 if [ -f "/usr/local/bin/git" ]; then
   alias git='/usr/local/bin/git'
@@ -324,6 +320,10 @@ case "$(uname)" in
     unalias ipython
     ;;
 esac
+
+# Go
+export GOPATH="$HOME/go"
+export PATH="$HOME/sources/go/bin:$GOPATH/bin:$PATH"
 
 # Repetition input, http://unix.stackexchange.com/a/315462/38906
 repeat-string() {
