@@ -199,12 +199,40 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-#if [[ -n $SSH_CONNECTION ]]; then
-#  export EDITOR='vim'
-#else
-#  export EDITOR='mvim'
-#fi
+case "$(uname)" in
+  "Linux")
+    # set variables for ibus
+    export XMODIFIERS=”@im=ibus”
+    export GTK_IM_MODULE=ibus
+    export QT4_IM_MODULE=ibus
+    export QT_IM_MODULE=ibus
+
+    export TERM=xterm-256color
+
+    # /usr/bin/xinput set-prop 'ETPS/2 Elantech Touchpad' 'Device Enabled' 1
+
+    dualmonitor() {
+      xrandr --output VGA-0 --right-of LVDS
+    }
+
+    ptouch() {
+      for p in "$@"; do
+        _dir=${p%/*}
+        [ -d "$_dir" ] || mkdir -p -- "$_dir"
+        touch -- "$p"
+      done
+    }
+
+    export VAGRANT_HOME=/home/cuonglm/.vagrant
+    ;;
+  "Darwin")
+    # Homebrew
+    export PATH="/opt/homebrew/bin:$PATH"
+
+    unalias ipython
+    ;;
+esac
+
 if [ -f "/usr/local/bin/vim" ]; then
   alias vim='/usr/local/bin/vim'
 fi
@@ -283,43 +311,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PYTHONSTARTUP=~/.pythonrc
 
 # Path for cabal
-if command -v cabal >/dev/null 2>&1; then
+if (( $+commands[cabal] )); then
   export PATH="$HOME/.cabal/bin:$PATH"
 fi
-
-case "$(uname)" in
-  "Linux")
-    # set variables for ibus
-    export XMODIFIERS=”@im=ibus”
-    export GTK_IM_MODULE=ibus
-    export QT4_IM_MODULE=ibus
-    export QT_IM_MODULE=ibus
-
-    export TERM=xterm-256color
-
-    # /usr/bin/xinput set-prop 'ETPS/2 Elantech Touchpad' 'Device Enabled' 1
-
-    dualmonitor() {
-      xrandr --output VGA-0 --right-of LVDS
-    }
-
-    ptouch() {
-      for p in "$@"; do
-        _dir=${p%/*}
-        [ -d "$_dir" ] || mkdir -p -- "$_dir"
-        touch -- "$p"
-      done
-    }
-
-    export VAGRANT_HOME=/home/cuonglm/.vagrant
-    ;;
-  "Darwin")
-    # Homebrew
-    export PATH="/opt/homebrew/bin:$PATH"
-
-    unalias ipython
-    ;;
-esac
 
 # hugo
 if (( $+commands[hugo] )); then
