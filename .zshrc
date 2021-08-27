@@ -280,7 +280,7 @@ fi
 export PATH="$HOME/.cask/bin:$PATH"
 
 # Stow
-if command -v stow >/dev/null 2>&1; then
+if (( $+commands[stow] )); then
   export STOW_DIR="/usr/local/stow"
   alias sustow='sudo STOW_DIR="$STOW_DIR"'
 fi
@@ -296,7 +296,7 @@ if [ -f "/Applications/Emacs.app/Contents/MacOS/Emacs" ]; then
 fi
 
 # Rakudo
-if command -v raku >/dev/null 2>&1; then
+if (( $+commands[raku] )); then
   export PATH="/usr/local/stow/rakudo/share/perl6/site/bin:$PATH"
 fi
 
