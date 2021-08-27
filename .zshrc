@@ -321,6 +321,17 @@ case "$(uname)" in
     ;;
 esac
 
+# hugo
+if (( $+commands[hugo] )); then
+  if [ ! -r "$ZSH_CACHE_DIR/hugo_version" ] || [ "$(hugo version)" != "$(< "$ZSH_CACHE_DIR/hugo_version")" ] || [ ! -f "$ZSH/completions/_hugo" ]; then
+    [ ! -d "$ZSH/completions" ] && mkdir "$ZSH/completions"
+    hugo gen autocomplete -t zsh > "$ZSH/completions/_hugo"
+    hugo version > $ZSH_CACHE_DIR/hugo_version
+  fi
+  autoload -Uz _hugo
+  _comps[hugo]=_hugo
+fi
+
 # Go
 export GOPATH="$HOME/go"
 export PATH="$HOME/sources/go/bin:$GOPATH/bin:$PATH"
