@@ -192,7 +192,7 @@ plugins=(
   aws
   gh
   npm
-  rust cargo
+  rust cargo rustup
 )
 case "$(uname)" in
   (Darwin) plugins+=(osx brew) ;;
