@@ -5,7 +5,7 @@
 cp ~/.vim/init.vim ~/.vimrc
 
 # Create backup dir
-mkdir ~/.vim/backup 2>/dev/null
+mkdir -p ~/.cache/dein/backup 2>/dev/null
 
 # Install Dein
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh

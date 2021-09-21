@@ -5,8 +5,8 @@ else
     set backup
 endif
 
-set backupdir=~/.vim/backup/
-set dir=~/.vim/backup/
+set backupdir=~/.cache/dein/backup/
+set dir=~/.cache/dein/backup/
 
 " Back to last edited line
 if has("autocmd")
