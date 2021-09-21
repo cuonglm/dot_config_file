@@ -6,5 +6,5 @@ case $1 in
      (*) vim=vim  ;;
 esac
 
-"$vim" -N -u ~/.vim/vimrc_bundle '+NeoBundleInstall!' '+call neobundle#commands#clean(1)' +qall
+"$vim" -N -u NONE '+call dein#update()' +qall
 [ $? -eq 0 ] && echo 'Update completed!'
