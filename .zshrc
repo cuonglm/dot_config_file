@@ -363,12 +363,6 @@ expand-repeat() {
 zle -N expand-repeat
 bindkey "$terminfo[kf8]" expand-repeat
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/cuonglm/google-cloud-sdk/path.zsh.inc' ]; then source '/home/cuonglm/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/cuonglm/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/cuonglm/google-cloud-sdk/completion.zsh.inc'; fi
-
 # direnv
 eval "$(direnv hook zsh)"
 
@@ -388,9 +382,3 @@ if [ "$_prof" -eq 1 ]; then
   unsetopt xtrace
   exec 2>&3 3>&-
 fi
-
-# opam configuration
-test -r /home/cuonglm/.opam/opam-init/init.zsh && . /home/cuonglm/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-# nixos
-if [ -e /Users/cuonglm/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/cuonglm/.nix-profile/etc/profile.d/nix.sh; fi
