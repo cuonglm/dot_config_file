@@ -7,6 +7,6 @@ cp ~/.vim/init.vim ~/.vimrc
 # Create backup dir
 mkdir ~/.vim/backup 2>/dev/null
 
-# Install NeoBundle
-[ -d ~/.vim/bundle/neobundle.vim ] || git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-vim -N -u ~/.vim/vimrc_bundle +NeoBundleInstall +qall
+# Install Dein
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+sh ./installer.sh ~/.cache/dein
