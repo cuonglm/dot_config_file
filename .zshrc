@@ -113,7 +113,6 @@ ZSH_THEME_RANDOM_CANDIDATES=(
   "refined"
   "rgm"
   "risto"
-  "rixius"
   "robbyrussell"
   "sammy"
   "simonoff"
