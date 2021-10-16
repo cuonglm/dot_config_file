@@ -26,15 +26,7 @@ call dein#begin(home . '/.cache/dein')
 call dein#add(home . '/.cache/dein/repos/github.com/Shougo/dein.vim')
 
 " Recommended to install
-call dein#add('Shougo/vimproc.vim', {
-            \ 'build' : {
-            \     'windows' : 'make -f make_mingw32.mak',
-            \     'cygwin' : 'make -f make_cygwin.mak',
-            \     'mac' : 'make -f make_mac.mak',
-            \     'unix' : 'make -f make_unix.mak',
-            \     'linux' : 'make',
-            \    },
-            \ })
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 
 " My Bundle
 call dein#add('tpope/vim-markdown')
