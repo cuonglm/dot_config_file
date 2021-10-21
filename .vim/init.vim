@@ -9,21 +9,16 @@ if &compatible
   set nocompatible
 endif
 
-let home = '/Users/cuonglm'
-if has('linux')
-    home = '/home/cuonglm'
-end
-
 " Required:
-set runtimepath+=home . '.cache/dein/repos/github.com/Shougo/dein.vim'
+exe 'set runtimepath+=' . expand('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
 
 " Required:
-call dein#begin(home . '/.cache/dein')
+call dein#begin(expand('~/.cache/dein'))
 
 " Let dein manage dein
 " Required:
-call dein#add(home . '/.cache/dein/repos/github.com/Shougo/dein.vim')
+call dein#add(expand('~/.cache/dein/repos/github.com/Shougo/dein.vim'))
 
 " Recommended to install
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
