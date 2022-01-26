@@ -340,7 +340,7 @@ fi
 # Go
 export GOPATH="$HOME/go"
 export PATH="$HOME/sources/go/bin:$GOPATH/bin:$PATH"
-compdef __go_tool_complete -P 'go1.*' gotip
+compdef _golang -P 'go1.*' gotip
 
 # Repetition input, http://unix.stackexchange.com/a/315462/38906
 repeat-string() {
