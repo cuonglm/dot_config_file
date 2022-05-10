@@ -194,7 +194,7 @@ plugins=(
   rust
 )
 case "$(uname)" in
-  (Darwin) plugins+=(osx brew) ;;
+  (Darwin) plugins+=(macos brew) ;;
   (*) : ;;
 esac
 
