@@ -25,7 +25,6 @@ ZSH_THEME_RANDOM_CANDIDATES=(
   "alanpeabody"
   "amuse"
   "apple"
-  "arrow"
   "aussiegeek"
   "avit"
   "awesomepanda"
