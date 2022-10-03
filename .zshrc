@@ -191,6 +191,7 @@ plugins=(
   gh
   npm
   rust
+  flyctl
 )
 case "$(uname)" in
   (Darwin) plugins+=(macos brew) ;;
@@ -340,6 +341,11 @@ fi
 export GOPATH="$HOME/go"
 export PATH="$HOME/sources/go/bin:$GOPATH/bin:$PATH"
 compdef _golang -P 'go1.*' gotip
+
+# flyctl
+export FLYCTL_INSTALL="$HOME/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+compdef _flyctl flyctl
 
 # Repetition input, http://unix.stackexchange.com/a/315462/38906
 repeat-string() {
