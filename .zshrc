@@ -347,6 +347,9 @@ export FLYCTL_INSTALL="$HOME/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 compdef _flyctl flyctl
 
+# Zig
+export PATH="$HOME/sources/zig:$PATH"
+
 # Repetition input, http://unix.stackexchange.com/a/315462/38906
 repeat-string() {
   REPLY=
