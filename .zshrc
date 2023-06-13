@@ -379,6 +379,10 @@ alias ssh-wp='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=n
 # gccgo
 alias go-gcc='LD_LIBRARY_PATH=/usr/local/stow/gccgo/lib64 go '
 
+# wasmtime
+export WASMTIME_HOME="$HOME/.wasmtime"
+export PATH="$WASMTIME_HOME/bin:$PATH"
+
 rnd() {
   </dev/urandom LC_ALL=C tr -dc '[:alnum:]_-' | head -c "$1"
 }
