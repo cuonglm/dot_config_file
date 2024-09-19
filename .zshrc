@@ -239,8 +239,6 @@ case "$(uname)" in
   "Darwin")
     # Homebrew
     export PATH="/opt/homebrew/bin:$PATH"
-
-    unalias ipython
     ;;
 esac
 
