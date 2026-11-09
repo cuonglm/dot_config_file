@@ -264,7 +264,7 @@ export EDITOR='vim'
 alias ssh-nopubkey='ssh -o PubkeyAuthentication=no '
 
 # Time format
-TIMEFMT=$'=====\nJOB %J\n%P    cpu\n%E real\n%U user\n%S sys'
+TIMEFMT=$'cpu  %P\nreal %E\nuser %U\nsys  %S\n'
 
 # Lua
 if [ -n "$use_lua" ]; then
